@@ -11,27 +11,64 @@
             margin: 0 auto;
         }
 
-        .Parrafo {
-            color: gray;
+        div {
+            background-color: cadetblue;
+            color: black;
             line-height: 1.5em;  
         }
 
-        #Parte1 {
+        p {
             font-size: 20px;
         }
-        h1 {
+
+        div p {
             margin-top: 0;
-            color: blue
+            color: rgb(34, 34, 34)
+        }
+
+        div > p {
+            font-family: 'Courier New', Courier, monospace;
+            color: rgb(85, 84, 84)
+        }
+
+        div + p{
+            text-decoration: underline;
+        }
+
+        div ~ p{
+            color: gray;
+            background-color: rgb(74, 74, 240);
         }
 
     </style>
 </head>
 <body>
-    <h1> Tipos de Selectores Basicos de HTML</h1>
-    
-    <p id="Parte1" class="Parrafo">Ingresar Texto</p>
-    <p id="Parte2" class="Parrafo">Ingresar Texto</p>
-    <p id="Parte3" class="Parrafo">Ingresar Texto</p>
-
+    <header>
+    <h1> Selectores Relacionales</h1>
+    </header>
+    <p> una presentacionsobre los selectores relacionales.<p>
+        <div>
+            <p> estoy dentro del primer <p>
+                <b> 
+                    <p> yo tambien estoy dentro del primer selector</p>
+                </b>
+        </div>
+        <div>>
+            <p> Paises de America </p>
+            <ul>
+                <p> Mexico</p>
+            </ul>
+            <ul>
+                <p> Colombia </p> 
+            </ul>
+            <ul>
+                <p> Peru </p>
+            </ul>
+        </div>
+        <div>
+            <b> Estoy dentro del primer div, pero no soy un parrafo</b>
+        </div>
+        <p> Vengo inmediatamente despues de un Div </p>
+        <p> Gracias por su Atencion </p>
 </body>
 </html>
