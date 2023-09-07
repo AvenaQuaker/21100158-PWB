@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParesCajas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .head {
+            background-color: rgb(141, 139, 139);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            position: static;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+        }
+
+        .cont {
+            border: 2px solid rgb(0, 0, 0);
+            float: left;
+            height: 100px;
+            position: absolute;
+        }
+
+        #Sidebar {
+            background-color: rgb(2, 158, 2);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            width: 20%;
+            height: 100%;
+
+        }
+        #Content {
+            background-color: rgb(92, 233, 92);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            left: 20%;
+            width: 80%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="head" id="Header"> Encabezado</div>
+    <div class="cont" id="Sidebar"> Barra de Herramientas</div>
+    <div class="cont" id="Content"> Contenido</div>
+</body>
+</html>
