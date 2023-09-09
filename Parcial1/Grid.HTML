@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCS-Grid</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contenedor {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            background-color: blue;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-template-rows: 25% 25% 25% 25%;
+            justify-content: center;
+            justify-items: stretch;
+            align-content: center;
+            align-items: stretch;
+        }
+
+        .caja {
+            background-color: aquamarine;
+        }
+
+        #Caja1,#Caja5,#Caja9,#Caja13 {
+            background-color: green;
+            border-color: green;
+            color: black;
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            line-height: 80px;
+            position: static;
+        }
+
+        #Caja4,#Caja2,#Caja3 {
+            background-color: rgb(141, 139, 139);
+            border-color: rgb(141, 139, 139);
+            color: rgb(255, 255, 255);
+        }
+
+        #Caja3{
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            position: static;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div id="Caja1" class = "caja">Barra de Herramientas</div>
+        <div id="Caja2" class = "caja"></div>
+        <div id="Caja3" class = "caja">Funcion Grid</div>
+        <div id="Caja4" class = "caja"></div>
+        <div id="Caja5" class = "caja"></div>
+        <div id="Caja6" class = "caja"></div>
+        <div id="Caja7" class = "caja"></div>
+        <div id="Caja8" class = "caja"></div>
+        <div id="Caja9" class = "caja"></div>
+        <div id="Caja10" class = "caja"></div>
+        <div id="Caja11" class = "caja"></div>
+        <div id="Caja12" class = "caja"></div>
+        <div id="Caja13" class = "caja"></div>
+        <div id="Caja14" class = "caja"></div>
+        <div id="Caja15" class = "caja"></div>
+        <div id="Caja16" class = "caja"></div>
+    </div>
+</body>
