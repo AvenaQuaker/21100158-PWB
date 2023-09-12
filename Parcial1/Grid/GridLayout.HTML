@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCS-Grid Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contenedor {
+            font-family: 'Segoe UI';
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            background-color: blue;
+            grid-template-columns: 30% 70%;
+            grid-template-rows: 15% 70% 15%;
+            justify-items: stretch;
+            align-items: stretch;
+            grid-template-areas: 'enca enca enca'
+            'col1 col2 col3'
+            'pied pied pied';
+
+        }
+
+        .caja {
+            background-color: aquamarine;
+            border:2px solid black;
+        }
+
+        #Caja1 { grid-area: enca;}
+        #Caja2 { grid-area: col1;}
+        #Caja3 { grid-area: col2;}
+        #Caja4 { grid-area: pied;}
+
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div id="Caja1" class = "caja">Encabezado</div>
+        <div id="Caja2" class = "caja">Contenido1</div>
+        <div id="Caja3" class = "caja">Contenido2</div>
+        <div id="Caja4" class = "caja">Pie de Pagina</div>
+    </div>
+</body>
