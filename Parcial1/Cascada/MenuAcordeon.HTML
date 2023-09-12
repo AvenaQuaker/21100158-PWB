@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Menu Acordeon </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+     
+        .head {
+            background-color: rgb(141, 139, 139);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            position: static;
+            line-height: 80px;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+        }
+
+        .cont {
+            border: 1px solid black;
+            background-color: rgb(127, 225, 255);
+            height: 100%;
+            position: absolute;
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            line-height: 80px;
+        }
+
+        #Sidebar {
+            width: 30%;
+            height: 90%;
+            font-family: "Segoe UI";
+        }
+
+        #Sidebar ul{
+            color:blueviolet;
+        }
+
+        #Content {
+            left: 30%;
+            width: 70%;
+            height: 90%;
+        }
+        .Submenu {
+            display: none;
+        }
+        .Opcion {
+            line-height: 50px;
+        }
+
+        li.Opcion:hover .Submenu {
+            display: block;
+            padding: 2em;
+            list-style-type: none;
+        }
+
+        li.Opcion .Submenu :hover {
+            color: rgb(82, 0, 82);
+        }
+    </style>
+</head>
+<body>
+    <div class="head" id="Header"> Encabezado</div>
+    <div class = "cont" id="Sidebar"> Barra de Herramientas
+        <ul>
+            <li class = "Opcion" > Opcion1
+                <ul class = "Submenu">
+                <li> Opcion 1.1</li>
+                <li> Opcion 1.2</li>
+                <li> Opcion 1.3</li>
+                </ul>
+            </li>
+            <li class = "Opcion" > Opcion2
+                <ul class = "Submenu">
+                <li> Opcion 2.1</li>
+                <li> Opcion 2.2</li>
+                <li> Opcion 2.3</li>
+                </ul>
+            </li>
+            <li class = "Opcion" > Opcion3
+                <ul class = "Submenu">
+                <li> Opcion 3.1</li>
+                <li> Opcion 3.2</li>
+                <li> Opcion 3.3</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="cont" id="Content"> Contenido</div>
+</body>
+</html>
