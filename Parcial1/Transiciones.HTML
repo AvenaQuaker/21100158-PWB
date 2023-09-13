@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transiciones</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            background-color: rgb(141, 139, 139);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            position: static;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+        }
+
+        .caja {
+            
+            width: calc(15% - 15px);
+            height: 200px;
+            background-color: rgb(67, 242, 255);
+            border: 1px solid rgb(86, 86, 253);
+            float: left;
+            mask-border-width: 10px;
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            line-height: 150px;
+        }
+
+        .caja:hover {
+            transition: all .7s ease;
+            transform:rotate(30deg);
+            width: calc(30% - 15px);
+            height: 300px;
+            background-color: rgb(108, 20, 248);
+            border: 1px solid rgb(86, 86, 253);
+            float: left;
+            mask-border-width: 10px;
+            font-family:'Segoe UI';
+            text-align: center;
+            font-weight:lighter;
+            font-size: large;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="head" id="Header">Transiciones</div>
+    <div class="contenedor">
+        <div class = "caja"> Caja1 </div>
+        <div class = "caja"> Caja2 </div>
+        <div class = "caja"> Caja3</div>
+    </div>
+</body>
