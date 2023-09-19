@@ -1,0 +1,33 @@
+input:checked + div#contenedor {
+  background-color: #6ccad6;
+}
+div#contenedor {
+  background-color: #8c8989;
+  font-family: 'Courier New';
+}
+div#contenedor h1 {
+  color: red;
+}
+div#contenedor h1 {
+  color: goldenrod;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.parrafo {
+  font-family: 'Courier New', Courier, monospace;
+  color: black;
+  line-height: 1.3em;
+}
+#par1 {
+  font-style: italic;
+  font-size: 20px;
+}
+h1 {
+  font-size: larger;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 0;
+  color: #3b3bf8;
+}
