@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TablaResponsiva</title>
+<style>
+    * {
+        font-family: "Courier New";
+        font-size: medium;
+        margin: 0;
+        padding: 0;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: blanchedalmond;
+    }
+
+    table, thead, tbody, tr, th, td {
+        border: 1px solid black;
+    }
+
+    @media screen and (max-width:600px) {
+        table, thead, tbody, tr, th, td {
+            display: block;
+        }
+        thead {
+            display: none;
+        }
+        td {
+            padding-left: 50%;
+        }
+
+        td:nth-child(1)::before { content:"GrandPrix"; position: absolute; left:10px;}
+        td:nth-child(2)::before { content:"Barein"; position: absolute; left:10px;}
+        td:nth-child(3)::before { content:"Francia"; position: absolute; left:10px;}
+        td:nth-child(4)::before { content:"Vernkastel"; position: absolute; left:10px;}
+        td:nth-child(5)::before { content:"GrandPrix"; position: absolute; left:10px;}
+    }
+
+    </style>
+</head>
+<body>   
+    <h1>Tabla Responsiva</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>GrandPrix</th>
+                <th>Road1</th>
+                <th>Road2</th>
+                <th>Road3</th>
+                <th>Road4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Barein</td>
+                <td>Road1</td>
+                <td>Road2</td>
+                <td>Road3</td>
+                <td>Road4</td>
+            </tr>
+            <tr>
+                <td>Francia</td>
+                <td>Road1</td>
+                <td>Road2</td>
+                <td>Road3</td>
+                <td>Road4</td>
+            </tr>
+            <tr>
+                <td>Vernkastel</td>
+                <td>Road1</td>
+                <td>Road2</td>
+                <td>Road3</td>
+                <td>Road4</td>
+            </tr>
+            <tr>
+                <td>Polonia</td>
+                <td>Road1</td>
+                <td>Road2</td>
+                <td>Road3</td>
+                <td>Road4</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html
