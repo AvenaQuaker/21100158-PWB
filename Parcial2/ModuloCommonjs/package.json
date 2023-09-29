@@ -1,6 +1,6 @@
 {
-  "name": "ModuloCommonjs",
-  "version": "1.0.1",
+  "name": "21100158-PWEB",
+  "version": "1.1.0",
   "description": "**Nombre del Alumno**: \"Jaime Aquino Martinez\"",
   "main": "index.js",
   "scripts": {
@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.5.0",
+    "jimp": "^0.22.10",
+    "table": "^6.8.1"
+  }
 }

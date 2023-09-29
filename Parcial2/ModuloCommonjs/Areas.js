@@ -1,15 +1,21 @@
 
-function areaCuadrado(lado)
-{
+function CalcularAreaCuadrado(lado) {
     return lado*lado
 }
 
-function areaTriangulo(Base,Altura)
-{
+function CalcularAreaTriangulo(Base,Altura) {
     return (Base*Altura)/2
 }
 
-module.exports.CalcularAreaCuadrado=areaCuadrado;
-module.exports.CalcularAreaTriangulo=areaTriangulo;
+function CalcularAreaCirculo(radio) {
+    return (Math.PI * (radio*radio))
+}
 
-console.log(module)
+function CalcularAreaRombo(diagonalMayor, diagonalMenor) {
+    return (diagonalMayor*diagonalMenor)/2
+}
+
+module.exports.CalcularAreaCuadrado = CalcularAreaCuadrado;
+module.exports.CalcularAreaTriangulo = CalcularAreaTriangulo;
+module.exports.calcularAreaCirculo = CalcularAreaCirculo;
+module.exports.calcularAreaRombo = CalcularAreaRombo;
