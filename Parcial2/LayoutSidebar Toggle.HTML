@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> LayoutSidebar Toggle</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .head{
+            background-color: rgb(141, 139, 139);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            position: static;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+        }
+
+        .cont{
+            border: 2px solid rgb(0, 0, 0);
+            height: 100%;
+        }
+
+        #Sidebar{
+            background-color: rgb(2, 158, 2);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            width: 20%;
+            height: 100%;
+            float: left;
+        }
+
+        #Content{
+            background-color: rgb(92, 233, 92);
+            font-family:Verdana;
+            text-align: left;
+            font-weight: bold;
+            font-size: large;
+            width: 80%;
+            height: 100%;
+            float: left;
+        }
+
+        .SidebarEscondido{
+            display: none;
+        }
+
+        .SidebarRevelado{
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+        <div class="head" id="Header"><h3>Encabezado</h3></div>
+        <div class="cont" id="Sidebar"><h3>Barra de Herramientas</h3></div>
+        <div class="cont" id="Content">
+            <button id="Btn" type="button"> ToggleMenu</button>
+            <h3>Contenido</h3>
+        </div>
+        <script>
+
+            document.getElementById("Btn").addEventListener("click",function(){
+                console.log("Click en el Boton")
+                document.getElementById("Sidebar").classList.toggle("SidebarEscondido");
+                document.getElementById("Content").classList.toggle("SidebarRevelado");
+            });
+        </script>
+</body>
+</html>
