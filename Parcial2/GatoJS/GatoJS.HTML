@@ -32,6 +32,14 @@
             line-height: 6cm;
         }
 
+        .caja img {
+            max-width: 100%;
+             max-height: 100%;
+              display: block;
+               margin: 0 auto;
+        }
+
+
         #Caja11{
             font-size:50px;
             text-align: center;
@@ -61,8 +69,20 @@
         document.getElementById("cont").addEventListener("click",function(e){
             console.log(e.target.id);
         if(document.getElementById(e.target.id).innerText==""){
-            if(xo=="X"){xo="O"} else {xo="X"}
-            document.getElementById(e.target.id).innerText=xo;
+            var img = document.createElement("img")
+            if(xo=="X"){
+                img.src = "img/x.png";
+                img.alt = "X";
+                xo="O";
+            }
+            else
+            {
+                img.src = "img/o.png";
+                img.alt = "O";
+                xo = "X";
+            }
+            e.target.innerText = "";
+            e.target.appendChild(img);
         }
     
         document.getElementById("btnResetear").addEventListener("click", function () {
