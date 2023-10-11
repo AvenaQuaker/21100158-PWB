@@ -68,7 +68,7 @@
     <script>
         $("document").ready(function(){
             var xo="X"
-            $("#cont").click(function(e){
+            $(".caja").click(function(e){
                 if($(e.target).text()=="")
                 if(xo =="X") {xo="O"} else {xo="X"}
                 $(e.target).text(xo);
@@ -79,6 +79,7 @@
         $(".caja").each(function() {
             console.log(this);
         })
+        
         for(const element of $(".caja")){
             element.innerText="";
         }
