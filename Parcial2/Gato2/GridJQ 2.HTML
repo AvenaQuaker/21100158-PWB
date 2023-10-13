@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid JQ 2</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #272727;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+        .contenedor {
+            display: grid;
+            justify-items: stretch;
+            align-content: center;
+            justify-content: center;
+            align-items: stretch;
+            grid-template-columns: repeat(3, 250px);
+            grid-template-rows: repeat(3, 250px);
+            gap: 10px;
+            width: 330px;
+        }
+
+        .caja {
+            background-color: #64E7F8;
+            border: 2px solid #000;
+            font-size: 100px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .caja:hover {
+            background-color: #49C0E5;
+        }
+
+        #Caja11{
+            font-size:30px;
+            text-align: center;
+        }
+
+        #resultado {
+            display: none;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 300px;
+        }
+
+        #ganador {
+             font-size: 20px;
+             margin-bottom: 10px;
+        }
+
+        #reiniciar {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="cont" class="contenedor">
+        <div id="Caja1" class = "caja"></div>
+        <div id="Caja2" class = "caja"></div>
+        <div id="Caja3" class = "caja"></div>
+        <div id="Caja4" class = "caja"></div>
+        <div id="Caja5" class = "caja"></div>
+        <div id="Caja6" class = "caja"></div>
+        <div id="Caja7" class = "caja"></div>
+        <div id="Caja8" class = "caja"></div>
+        <div id="Caja9" class = "caja"></div>
+    </div>
+
+    <div id="resultado">
+        <p id="ganador"></p>
+        <button id="reiniciar">Reiniciar Juego</button>
+    </div>
+    
+    <script>
+        var xo = "X";
+        var gameOver = false;
+
+        function VerificarGanador() {
+            var Cajas = $(".caja");
+            var Combinaciones = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+                [0, 4, 8], [2, 4, 6]
+            ];
+
+            for (var combo of Combinaciones) {
+                var [a, b, c] = combo;
+                if (Cajas[a].innerText && Cajas[a].innerText === Cajas[b].innerText && Cajas[a].innerText === Cajas[c].innerText) {
+                    return Cajas[a].innerText;
+                }
+            }
+
+            return null;
+        }
+
+        function VerificarEmpate() {
+            var Cajas = $(".caja");
+            for (var box of Cajas) {
+                if (box.innerText === "") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        $("document").ready(function(){
+            $(".caja").click(function(e){
+                if (!gameOver && $(e.target).text() === "") {
+                    if (xo === "X") { xo = "O";} else { xo = "X";}
+                    $(e.target).text(xo);
+
+                    var Ganador = VerificarGanador();
+                    if (Ganador) {
+                        gameOver = true;
+                        $("#ganador").text(Ganador + " ha Ganado.");
+                        $("#resultado").show();
+                    } else if (VerificarEmpate()) {
+                        gameOver = true;
+                        $("#ganador").text("Empate");
+                        $("#resultado").show();
+                    }
+                }
+            });
+
+            $("#reiniciar").click(function() {
+                $(".caja").each(function() {
+                    console.log(this);
+                });
+
+                for (const element of $(".caja")) {
+                    element.innerText = "";
+                }
+                xo = "X";
+                gameOver = false;
+                $("#resultado").hide();
+            });
+        });
+    </script>
+</body>
