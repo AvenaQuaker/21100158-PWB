@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander's Pool</title>
+    <script src="jquery.js"></script>
+    <script src="jquery.datetimepicker.full.min.js"></script>
+    <link rel="stylesheet" href="jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="styles.css">
+</header>
+<body>
+    <header>
+        <div id="navbar-left">
+            <button id="Boton-Inicio">&#9776; Menu</button>
+        </div>
+        <div id="navbar-center">
+            <div class='Titulo'></div>
+        </div>
+        <div id="navbar-right">
+            <div class='Logo'></div>
+        </div>
+    </header>
+
+    <nav id="sidebar">
+        <ul>
+            <li><button id="Boton-Final">&#9776; Menu</button></a></li>
+            <li></li>
+            <li></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio">
+        <div class="container">
+            <h1>Bienvenido a Alexander's Pool</h1>
+            <p>Tu lugar perfecto para disfrutar del sol y el agua.</p>
+            <div class="FotoInicial"></div>
+        </div>
+    </section>
+
+    <section id="agenda">
+        <div class="container">
+            <h2>Agenda tu Visita</h2>
+            <p>Reserva tu día y hora para disfrutar de nuestra piscina.</p>
+            <button class="btn" id="abrir-modal">Reservar</button>
+            <div class="Imagenes">
+                <img src="Foto1.jpg">
+                <img src="Foto2.jpg">
+            </div>
+        </div>
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Reservar</h3>
+            <p>Ingrese los datos solicitados para agendar su reserva</p>
+            <input type="text" name="" id="timedatePicker">
+        </div>
+    </div>
+
+    <section id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>¿Tienes alguna pregunta o consulta? ¡Contáctanos!</p>
+            <p>Email: info@piscinaxyz.com</p>
+            <p>Teléfono: +123-456-7890</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy;Alexander's Pool</p>
+    </footer>
+
+    <script>
+        const Inicio = document.getElementById('Boton-Inicio');
+        const Final = document.getElementById('Boton-Final');
+        const sidebar = document.getElementById('sidebar');
+
+        Inicio.addEventListener('click', ()=> {
+            sidebar.classList.toggle('show-sidebar');
+        });
+        Final.addEventListener('click', ()=> {
+            sidebar.classList.toggle('show-sidebar');
+        });
+
+        $(document).ready(function () {
+            const modal = $("#myModal");
+            const abrirModal = $("#abrir-modal");
+            const cerrarModal = $(".close");
+
+            $('#timedatePicker').datetimepicker();
+
+            abrirModal.click(function () {
+                modal.css("display", "block");
+            });
+
+            cerrarModal.click(function () {
+                modal.css("display", "none");
+            });
+        
+            $(window).click(function (e) {
+                if (e.target === modal[0]) {
+                    modal.css("display", "none");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

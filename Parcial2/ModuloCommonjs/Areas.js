@@ -12,7 +12,9 @@ function CalcularAreaCirculo(radio) {
 }
 
 function CalcularAreaRombo(diagonalMayor, diagonalMenor) {
+    
     return (diagonalMayor*diagonalMenor)/2
+    
 }
 
 module.exports.CalcularAreaCuadrado = CalcularAreaCuadrado;
