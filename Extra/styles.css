@@ -241,6 +241,39 @@ footer {
     overflow-y: auto;
 }
 
+.modal div #VentanaModal {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    height: 80%;
+
+}
+
+form label, form p {
+    text-align: left;
+}
+
+.modal div #ImagenModal {
+    background: url('Foto5.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#reserva-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#reserva-form label {
+    margin-bottom: 10px; 
+}
+
+#reserva-form input {
+    padding: 5px;
+    margin-bottom: 15px;
+    width:85%;
+}
+
 .close {
     color: #aaa;
     float: right;

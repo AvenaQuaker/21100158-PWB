@@ -58,7 +58,25 @@
             <span class="close">&times;</span>
             <h3>Reservar</h3>
             <p>Ingrese los datos solicitados para agendar su reserva</p>
-            <input type="text" name="" id="timedatePicker">
+
+            <div id="VentanaModal">
+            <form id="reserva-form">
+                <label for="Fecha"> Fecha:</label> 
+                <input type="text" name="" id="timedatePicker">
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+    
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+    
+                <p id="monto-final-text">Monto Final:</p>
+            </form>
+            <div id="ImagenModal">
+                
+            </div>
+        </div>
+
         </div>
     </div>
 
@@ -91,6 +109,7 @@
             const modal = $("#myModal");
             const abrirModal = $("#abrir-modal");
             const cerrarModal = $(".close");
+            const montoFinalText = $("#monto-final-text");
 
             $('#timedatePicker').datetimepicker();
 
@@ -107,6 +126,23 @@
                     modal.css("display", "none");
                 }
             });
+
+             // Evento que se dispara cuando se selecciona una fecha
+        $('#timedatePicker').on('change', function (e) {
+            const selectedDate = new Date($(this).val());
+            const dayOfWeek = selectedDate.getDay(); // 0 para Domingo, 1 para Lunes, 2 para Martes, etc.
+
+            if (dayOfWeek === 5) 
+            { 
+                montoFinalText.text("Monto Final: 2500");
+            } else if (dayOfWeek === 0 || dayOfWeek === 6)
+            {
+                montoFinalText.text("Monto Final: 3000");
+            }
+            else {
+                montoFinalText.text("Monto Final: 1500");
+            }
+        });
         });
     </script>
 </body>
