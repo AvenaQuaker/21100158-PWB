@@ -6,11 +6,14 @@
     <title>PeticionesHTTP</title>
 </head>
 <body>
-    <button id="btn">Peticion XMLHTTPRequest</button>
+    <button id="btnXML">Peticion XMLHTTPRequest</button>
+    <button id="btnFetch">Peticion Fetch</button>
+    <button id="btnAsync">Peticion Async</button>
+    <button id="btnJQ">Peticion JQuery</button>
     <div id="chick"></div>
 
     <script>
-        document.getElementById("btn").addEventListener("click",()=>{
+        document.getElementById("btnXML").addEventListener("click",()=>{
             const xhr = new XMLHttpRequest();
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === this.DONE) {
@@ -23,9 +26,23 @@
             });
 
             xhr.open("GET", "https://api.chucknorris.io/jokes/random");
-            xhr.send();
+            xhr.send();  
         })
+
+        document.getElementById("btnFetch").addEventListener('click'),() => {
+            fetch("https://api.chucknorris.io/jokes/random")
+            .then(objetoRespuesta => objetoRespuesta.json())
+            .then(datoJson => document.getElementById('chick').innerText = dato.value);
+        }
+
+
+        document.getElementById("btnAsync".addEventListener("click", async () => {
+            let objetoRespuesta = await fetch("https://api.chucknorris.io/jokes/random");
+            let datoJson  = await objetoRespuesta.json();
+            document.getElementById("chick").innerText = datoJson.value;
+
+        }))
     </script>
 
 </body>
-</html>
+</html>  
