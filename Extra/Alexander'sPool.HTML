@@ -62,13 +62,13 @@
             <div id="VentanaModal">
             <form id="reserva-form">
                 <label for="Fecha"> Fecha:</label> 
-                <input type="text" name="" id="timedatePicker">
+                <input type="text" id="timedatePicker" required>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre">
     
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono">
+                <input type="text" id="telefono" required>
     
                 <p id="monto-final-text">Monto Final:</p>
                 <p id="anticipo-text">Anticipo:</p>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div id="Factura">
-                        <input type='checkbox'> <label> Desea Factura?</label>
+                        <input type='checkbox' required> <label> Desea Factura?</label>
                     </div>
                     <div>
                         <button class="btn" id="MostrarMensaje">Reserva Ahora</button>
@@ -105,7 +105,6 @@
 
         </div>
     </div>
-
     <div id="Mensaje" class="modal">
         <div class="modal-content">
             <span class="close" id="CerrarAgradecimiento">&times;</span>
@@ -151,12 +150,6 @@
 
             cerrarModal.click(function () {
                 modal.css("display", "none");
-            });
-        
-            $(window).click(function (e) {
-                if (e.target === modal[0]) {
-                    modal.css("display", "none");
-                }
             });
 
             $('#timedatePicker').on('change', function (e) {
