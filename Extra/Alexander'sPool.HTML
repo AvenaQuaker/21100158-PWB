@@ -65,18 +65,52 @@
                 <input type="text" name="" id="timedatePicker">
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre">
     
                 <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
+                <input type="tel" id="telefono" name="telefono">
     
                 <p id="monto-final-text">Monto Final:</p>
+                <p id="anticipo-text">Anticipo:</p>
+                <div id="Pago">
+                    <div id="Header">
+                        <label>Selecciona tu Metodo de Pago</label>
+                    </div>
+                    <div id="ImgPago">
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div id="Factura">
+                        <input type='checkbox'> <label> Desea Factura?</label>
+                    </div>
+                    <div>
+                        <button class="btn" id="MostrarMensaje">Reserva Ahora</button>
+                    </div>
+                </div>
             </form>
             <div id="ImagenModal">
-                
+
             </div>
         </div>
 
+        </div>
+    </div>
+
+    <div id="Mensaje" class="modal">
+        <div class="modal-content">
+            <span class="close" id="CerrarAgradecimiento">&times;</span>
+            <h3>Agradecimiento</h3>
+            <p>¡Gracias por su reserva!</p>
         </div>
     </div>
 
@@ -94,22 +128,20 @@
     </footer>
 
     <script>
-        const Inicio = document.getElementById('Boton-Inicio');
-        const Final = document.getElementById('Boton-Final');
-        const sidebar = document.getElementById('sidebar');
-
-        Inicio.addEventListener('click', ()=> {
-            sidebar.classList.toggle('show-sidebar');
-        });
-        Final.addEventListener('click', ()=> {
-            sidebar.classList.toggle('show-sidebar');
+        $("#MostrarMensaje, #CerrarAgradecimiento").on("click", function() {
+            $("#Mensaje").toggle();
         });
 
+        $("#Boton-Inicio, #Boton-Final").on("click", function() {
+            $("#sidebar").toggleClass("show-sidebar");
+        });
+        
         $(document).ready(function () {
             const modal = $("#myModal");
             const abrirModal = $("#abrir-modal");
             const cerrarModal = $(".close");
             const montoFinalText = $("#monto-final-text");
+            const Anticipo = $('#anticipo-text')
 
             $('#timedatePicker').datetimepicker();
 
@@ -127,20 +159,22 @@
                 }
             });
 
-             // Evento que se dispara cuando se selecciona una fecha
-        $('#timedatePicker').on('change', function (e) {
+            $('#timedatePicker').on('change', function (e) {
             const selectedDate = new Date($(this).val());
-            const dayOfWeek = selectedDate.getDay(); // 0 para Domingo, 1 para Lunes, 2 para Martes, etc.
+            const dayOfWeek = selectedDate.getDay(); 
 
             if (dayOfWeek === 5) 
             { 
                 montoFinalText.text("Monto Final: 2500");
+                Anticipo.text('Anticipo: 500')
             } else if (dayOfWeek === 0 || dayOfWeek === 6)
             {
                 montoFinalText.text("Monto Final: 3000");
+                Anticipo.text('Anticipo: 600')
             }
             else {
                 montoFinalText.text("Monto Final: 1500");
+                Anticipo.text('Anticipo: 300')
             }
         });
         });
