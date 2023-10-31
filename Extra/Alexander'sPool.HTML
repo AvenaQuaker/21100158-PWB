@@ -61,11 +61,11 @@
 
             <div id="VentanaModal">
             <form id="reserva-form">
-                <label for="Fecha"> Fecha:</label> 
+                <label for="Fecha">Fecha:</label> 
                 <input type="text" id="timedatePicker" required>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre">
+                <input type="text" id="nombre" required>
     
                 <label for="telefono">Teléfono:</label>
                 <input type="text" id="telefono" required>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div id="Factura">
-                        <input type='checkbox' required> <label> Desea Factura?</label>
+                        <input type='checkbox'> <label>Desea Factura?</label>
                     </div>
                     <div>
                         <button class="btn" id="MostrarMensaje">Reserva Ahora</button>
@@ -105,9 +105,10 @@
 
         </div>
     </div>
+
     <div id="Mensaje" class="modal">
         <div class="modal-content">
-            <span class="close" id="CerrarAgradecimiento">&times;</span>
+            <span class="cerrar" id="CerrarAgradecimiento">&times;</span>
             <h3>Agradecimiento</h3>
             <p>¡Gracias por su reserva!</p>
         </div>
@@ -135,7 +136,7 @@
             $("#sidebar").toggleClass("show-sidebar");
         });
         
-        $(document).ready(function () {
+            $(document).ready(function () {
             const modal = $("#myModal");
             const abrirModal = $("#abrir-modal");
             const cerrarModal = $(".close");
@@ -169,7 +170,7 @@
                 montoFinalText.text("Monto Final: 1500");
                 Anticipo.text('Anticipo: 300')
             }
-        });
+            });
         });
     </script>
 </body>
