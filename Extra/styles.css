@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -10,7 +9,6 @@ body {
     background-size: cover;
 }
 
-/* Encabezado */
 header {
     background-color: #103780;
     color: #fff;
@@ -21,8 +19,8 @@ header {
 }
 
 .Titulo {
-    width: 400px; /* Ancho de la caja central */
-    height: 50px; /* Altura de la caja central */
+    width: 400px; 
+    height: 50px; 
     background: url('Titulo.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -31,8 +29,8 @@ header {
 }
 
 .Logo {
-    width: 160px; /* Ancho de la caja central */
-    height: 50px; /* Altura de la caja central */
+    width: 160px; 
+    height: 50px; 
     background: url('Logo.png');
     background-repeat: no-repeat;
     background-position: center center;
@@ -46,21 +44,20 @@ header {
     background-position: center center;
     background-size: cover;
     width: 1300px;
-    max-width: 100%; /* Ancho de la caja central */
-    height: 400px; /* Altura de la caja central */
+    max-width: 100%; 
+    height: 400px; 
 }
 
-/* Estilos para el sidebar */
 #sidebar {
     position: fixed;
     top: 0;
-    left: -150px; /* Lo ocultamos inicialmente */
+    left: -150px; 
     width: 150px;
     height: 100%;
-    background-color: #0a2455; /* Color de fondo del sidebar */
-    transition: left 0.3s; /* Agregamos una transición suave para animar la apertura/cierre */
+    background-color: #0a2455; 
+    transition: left 0.3s; 
     z-index: 1;
-    overflow-y: auto; /* Agregamos desplazamiento si el contenido es largo */
+    overflow-y: auto; 
 }
 
 #sidebar ul {
@@ -74,25 +71,23 @@ header {
 }
 
 #sidebar a {
-    color: #fff; /* Color de texto en los enlaces */
+    color: #fff; 
     text-decoration:none;
     display: block;
-    transition: background-color 0.2s; /* Agregamos una transición suave al pasar el mouse sobre los enlaces */
+    transition: background-color 0.2s;
 }
 
 #sidebar a:hover {
-    background-color: #103881; /* Color de fondo cuando se pasa el mouse sobre los enlaces */
+    background-color: #103881;
 }
 
-/* Estilos para mostrar el sidebar cuando está abierto */
 .show-sidebar {
     left: 0 !important;
 }
 
-/* Estilos para el botón de menú en el encabezado */
 #Boton-Inicio {
-    background-color: #103780; /* Color de fondo del botón */
-    color: #fff; /* Color de texto del botón */
+    background-color: #103780; 
+    color: #fff; 
     border: none;
     padding: 10px;
     font-size: 24px;
@@ -100,8 +95,8 @@ header {
 }
 
 #Boton-Final {
-    background-color: #0a2455; /* Color de fondo del botón */
-    color: #fff; /* Color de texto del botón */
+    background-color: #0a2455;
+    color: #fff;
     border: none;
     padding: 10px;
     font-size: 24px;
@@ -118,11 +113,11 @@ header {
 
 section {
     background-color: #fff;
-    margin: 20px auto !important; /* Centramos las secciones horizontalmente */
+    margin: 20px auto !important;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 60vh;
-    max-width: 60%; /* Ajustamos el ancho máximo a 100% para que las secciones se ajusten al contenedor */
+    max-width: 60%; 
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -148,7 +143,7 @@ section#contacto {
 }
 .container {
     max-width: 90%;
-    margin: 0 auto; /* Centra el contenedor en la página */
+    margin: 0 auto;
 }
 
 .Imagenes{
@@ -214,7 +209,6 @@ footer {
     padding: 10px 0;
 }
 
-/* Estilos para el modal */
 .modal {
     display: none;
     position: fixed;
@@ -261,9 +255,12 @@ footer {
 
 .modal div #ImgPago{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    height: 90%;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 5px;
+    height: auto;
 }
+
 
 .modal div #Factura {
     display: flex;
@@ -344,6 +341,16 @@ form label, form p {
     margin-bottom: 15px;
     width:85%;
 }
+
+#ImgPago img {
+    width: 100%;
+    object-fit: cover; 
+}
+
+#ImgPago img:hover {
+    filter: brightness(80%);
+}
+
 
 .close {
     color: #aaa;
