@@ -130,7 +130,7 @@ section#inicio p {
 
 section#agenda {
     height: 80vh;
-    max-width: 90%;
+    max-width: 60%;
 }
 
 section#agenda p {
@@ -192,10 +192,11 @@ h1, h2 {
     display: inline-block;
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 20px 40px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: large;
 }
 
 .btn:hover {
@@ -372,4 +373,3 @@ form label, form p {
     text-decoration: none;
     cursor: pointer;
 }
-

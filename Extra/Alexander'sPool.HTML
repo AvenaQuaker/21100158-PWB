@@ -128,9 +128,17 @@
     </footer>
 
     <script>
-        $("#MostrarMensaje, #CerrarAgradecimiento").on("click", function() {
+        $('form').submit(function(e) { e.preventDefault(); });
+
+        $("#MostrarMensaje").on("click", function() {
+            if($("#nombre").val()!=""&&$("#telefono").val()!=""&&$("#timedatePicker").val()!="")
             $("#Mensaje").toggle();
         });
+
+        $("#CerrarAgradecimiento").on("click", function() {
+            $("#Mensaje").toggle();
+        });
+
 
         $("#Boton-Inicio, #Boton-Final").on("click", function() {
             $("#sidebar").toggleClass("show-sidebar");

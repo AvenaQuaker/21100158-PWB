@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeticionesConParametros</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    }
+
+    div {
+    text-align: center;
+    padding: 20px;
+    }
+
+    select, button {
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px;
+    }
+
+    label {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    }
+</style>
+<div>
+    <select id="Categoria"></select> 
+    <button id="Peticion">Peticion</button>
+    <label id="Chiste"></label>
+</div>
+    <script>
+        window.onload=function () {
+            fetch("https://api.chucknorris.io/jokes/categories")
+            .then(Respuesta=>Respuesta.json())
+            .then(function(dato){
+                for (const property of dato) {
+                    console.log(dato)
+                    let option = document.createElement("option")
+                    option.value = property;
+                    option.innerText = property;
+                    document.getElementById("Categoria").appendChild(option);
+                }
+            });
+        }
+
+        document.getElementById("Peticion").addEventListener("click", ()=>{
+            let Categoria = document.getElementById("Categoria").value;
+            fetch("https://api.chucknorris.io/jokes/random?category=" + Categoria)
+            .then(respuesta=>respuesta.json())
+            .then(function(dato){
+                document.getElementById("Chiste").innerText = dato.value;
+            })
+        })
+    </script>
+    
+</body>
+</html>
