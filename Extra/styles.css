@@ -45,7 +45,7 @@ header {
     background-size: cover;
     width: 1300px;
     max-width: 100%; 
-    height: 400px; 
+    height: 45vh; 
 }
 
 #sidebar {
@@ -114,6 +114,7 @@ header {
 section {
     background-color: #fff;
     margin: 20px auto !important;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 60vh;
@@ -151,7 +152,6 @@ section#contacto {
     grid-template-columns: repeat(2,1fr);
     gap: 10px;
     margin-top: 10px;
-
 }
 
 .Imagenes img {
@@ -172,16 +172,6 @@ nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-}
-
-/* Secciones */
-section {
-    background-color: #fff;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 60%;
 }
 
 h1, h2 {
@@ -373,3 +363,78 @@ form label, form p {
     text-decoration: none;
     cursor: pointer;
 }
+
+@media screen and (max-height: 800px) {
+    .Imagenes img {
+        width: 100%;
+        height: 55vh;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .FotoInicial {
+        background: url('FotoInicial.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 1300px;
+        max-width: 100%; 
+        height: 30vh; 
+    }
+
+    .Imagenes img {
+        width: 100%;
+        height: 30vh;
+    }
+
+    .Logo {
+        width: 160px; 
+        height: 50px; 
+        background: url('Logo.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        margin-left: -170px;
+    }
+
+    section {
+        background-color: #fff;
+        margin: 20px auto !important;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 60vh;
+        max-width: 60%; 
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    section#inicio p {
+        margin-top: -15px;
+        margin-bottom: 20px;
+    }
+
+    section#inicio {
+        margin-top: -15px;
+        margin-bottom: 20px;
+        height: 40vh;
+    }
+    
+    section#agenda {
+        height: 50vh;
+        max-width: 60%;
+    }
+    
+    section#agenda p {
+        margin-top: -15px;
+    }
+    
+    section#contacto {
+        height: 15vh;
+        justify-content: center;
+    }
+
+}
+
+
+
