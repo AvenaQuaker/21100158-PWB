@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeticionCORS</title>
+</head>
+<body>
+    <form>
+        <button type="button" id ="btnPeticion">Peticion</button>
+    </form>
+    <script>
+        document.getElementById("btnPeticion").addEventListener("click",async()=>{
+            let response = await fetch("http://localhost:8082", { method: "GET",});
+            let data = await response.text();
+            console.log(data);
+        });
+    </script>
+</body>
+</html>
