@@ -142,6 +142,7 @@ section#contacto {
     height: 20vh;
     justify-content: center;
 }
+
 .container {
     max-width: 90%;
     margin: 0 auto;
@@ -189,7 +190,22 @@ h1, h2 {
     font-size: large;
 }
 
-.btn:hover {
+.btnModal {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size:medium;
+}
+
+.btn:hover{
+    background-color: #555;
+}
+
+.btnModal:hover{
     background-color: #555;
 }
 
@@ -234,6 +250,7 @@ footer {
 
 .modal div #Pago {
     display: grid;
+    margin-top: -10px;
     grid-template-rows: 20% 40% 20% 20%;
     height: 100%;
     width: 90%;
@@ -309,6 +326,8 @@ footer {
 
 form label, form p {
     text-align: left;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .modal div #ImagenModal {
@@ -368,6 +387,19 @@ form label, form p {
     .Imagenes img {
         width: 100%;
         height: 55vh;
+    }
+
+    .btnModal {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #333;
+        color: #fff;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size:medium;
     }
 }
 

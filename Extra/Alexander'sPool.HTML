@@ -69,12 +69,14 @@
     
                 <label for="telefono">Teléfono:</label>
                 <input type="text" id="telefono" required>
+
+                <label for="email">Correo Electronico:</label>
+                <input type="email" id="email" required>
     
                 <p id="monto-final-text">Monto Final:</p>
                 <p id="anticipo-text">Anticipo:</p>
                 <div id="Pago">
                     <div id="Header">
-                        <label>Selecciona tu Metodo de Pago</label>
                     </div>
                     <div id="ImgPago">
                         <div>
@@ -94,7 +96,7 @@
                         <input type='checkbox'> <label>Desea Factura?</label>
                     </div>
                     <div>
-                        <button type="button" class="btn" id="MostrarMensaje">Reserva Ahora</button>
+                        <button type="button" class="btnModal" id="MostrarMensaje">Reserva Ahora</button>
                     </div>
                 </div>
             </form>
@@ -177,6 +179,8 @@
                 Anticipo.text('Anticipo: 300')
             }
             });
+
+            
         });
     </script>
 </body>
