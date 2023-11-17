@@ -25,7 +25,7 @@ app.listen(8082,(req,res)=>{
 const connection = mySQL.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: "";
+    password: "",
     database: 'BaseDeDatos'
 });
 
