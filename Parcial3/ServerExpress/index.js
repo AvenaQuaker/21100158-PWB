@@ -1,12 +1,30 @@
 const express = require('express');
 const cors = require('cors')
 const app = express();
-const mySQL = require('mysql2');
+const mysql = require('mysql2');
 
 app.use(cors());
 
-app.get('/',(req,res)=>{
-    res.json({mensaje: "Server Express respondiendo a Get"});
+app.get('/city',(req,res)=>{
+// create the connection to database
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'sonic',
+    database: 'world',
+});
+
+// simple query
+connection.query( 'SELECT * FROM city;',
+    function(err, results, fields) {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results, if available
+        res.json({results});
+    }
+);
+
+    
+    
 });
 
 app.post('/',(req,res)=>{
@@ -17,6 +35,7 @@ app.delete('/',(req,res)=>{
     res.json({mensaje: "Server Express respondiendo a Delete"});
 })
 
-app.listen(8082,(req,res)=>{
-    console.log('Servidor express corriendo en puerto 8082');
+app.listen(8083,(req,res)=>{
+    console.log('Servidor express corriendo en puerto 8083');
 });
+
