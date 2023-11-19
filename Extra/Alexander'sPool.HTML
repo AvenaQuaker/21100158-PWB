@@ -116,6 +116,18 @@
         </div>
     </div>
 
+    
+    <button type="button" class="btnModal" id="MostrarError">Reserva Ahora</button>
+
+
+    <div id="Error" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" id="CerrarError">&times;</span>
+            <h3>Error!</h3>
+            <p>Ha ocurrido un error en el sistema</p>
+        </div>
+    </div>
+
     <section id="contacto">
         <div class="container">
             <h2>Contacto</h2>
@@ -139,6 +151,13 @@
             $("#Mensaje").toggle();
         });
 
+        $("#MostrarError").on("click", function() {
+            $("#Error").toggle();
+        });
+
+        $("#CerrarError").on("click", function() {
+            $("#Error").toggle();
+        });
 
         $("#Boton-Inicio, #Boton-Final").on("click", function() {
             $("#sidebar").toggleClass("show-sidebar");
