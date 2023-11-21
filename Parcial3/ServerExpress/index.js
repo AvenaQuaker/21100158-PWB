@@ -10,8 +10,9 @@ app.get('/city',(req,res)=>{
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'sonic',
+    password: 'SONIC',
     database: 'world',
+    port: 8082
 });
 
 // simple query
