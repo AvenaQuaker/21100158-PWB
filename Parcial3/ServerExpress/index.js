@@ -6,7 +6,7 @@ const mysql = require('mysql2');
 app.use(cors());
 
 app.get('/city',(req,res)=>{
-// create the connection to database
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -15,11 +15,10 @@ const connection = mysql.createConnection({
     port: 8082
 });
 
-// simple query
 connection.query( 'SELECT * FROM city;',
     function(err, results, fields) {
-      console.log(results); // results contains rows returned by server
-      console.log(fields); // fields contains extra meta data about results, if available
+        console.log(results); 
+        console.log(fields); 
         res.json({results});
     }
 );

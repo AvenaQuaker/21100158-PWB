@@ -159,6 +159,7 @@ section#contacto {
     width: 100%;
     height: 60vh;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -308,6 +309,17 @@ footer {
     z-index: 2; 
 }
 
+#Advertencia {
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2; 
+}
+
 #Mensaje .modal-content {
     background-color: #fff;
     position: absolute;
@@ -323,6 +335,21 @@ footer {
 }
 
 #Error .modal-content {
+    font-size:medium;
+    background-color: #fff;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    height: 20%;
+    width: 20%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+#Advertencia .modal-content {
     font-size: large;
     background-color: #fff;
     position: absolute;

@@ -108,6 +108,8 @@
         </div>
     </div>
 
+    <button type="button" class="btnModal" id="MostrarAdv">Reserva Ahora</button>
+
     <div id="Mensaje" class="modal">
         <div class="modal-content">
             <span class="cerrar" id="CerrarAgradecimiento">&times;</span>
@@ -116,15 +118,19 @@
         </div>
     </div>
 
-    
-    <button type="button" class="btnModal" id="MostrarError">Reserva Ahora</button>
-
-
     <div id="Error" class="modal">
         <div class="modal-content">
             <span class="cerrar" id="CerrarError">&times;</span>
             <h3>Error!</h3>
             <p>Ha ocurrido un error en el sistema</p>
+        </div>
+    </div>
+
+    <div id="Advertencia" class="modal">
+        <div class="modal-content">
+            <span class="cerrar" id="CerrarAdv">&times;</span>
+            <h3>Advertencia</h3>
+            <p id="Adv"></p>
         </div>
     </div>
 
@@ -142,6 +148,8 @@
     </footer>
 
     <script>
+        const Arreglo = ['Prueba1','Prueba2','Prueba3'];
+
         $("#MostrarMensaje").on("click", function() {
             if($("#nombre").val()!=""&&$("#telefono").val()!=""&&$("#timedatePicker").val()!="")
             $("#Mensaje").toggle();
@@ -157,6 +165,22 @@
 
         $("#CerrarError").on("click", function() {
             $("#Error").toggle();
+        });
+
+        $("#MostrarAdv").on("click", function() {
+            const lista = $("<ul></ul>");
+
+            Arreglo.forEach(function(item) {
+                const Elemento = $("<li></li>").text(item); 
+                lista.append(Elemento); 
+            });
+
+            $('#Adv').empty().append(lista); 
+            $("#Advertencia").toggle(); 
+        });
+
+        $("#CerrarAdv").on("click", function() {
+            $("#Advertencia").toggle();
         });
 
         $("#Boton-Inicio, #Boton-Final").on("click", function() {
