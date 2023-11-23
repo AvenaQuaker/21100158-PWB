@@ -14,10 +14,27 @@ const connection = mysql.createConnection({
 });
 
 app.get('/city',(req,res)=>{
-connection.query( 'SELECT * FROM city LIMIT 20', function(err, results, fields) {
-        console.log(results); 
-        console.log(fields); 
-        res.json(results);
+    console.log(req.query.ID);
+    let consulta = "";
+
+    if(typeof(req.query.ID)=='undefined'){
+        consulta = 'SELECT * FROM city';
+    }else{
+        consulta = 'SELECT * FROM city WHERE ID=' + (req.query.ID)
+    }
+
+    console.log(consulta)
+    
+    connection.query(consulta, function(err, results, fields) {
+        if(results.length==0){
+            res.json({  status:0,
+                        mensaje:'ID de la Ciudad no Existe',
+                        datos: {}});
+        }else{
+            res.json({  status:1,
+                        mensaje:'Usuario Encontrado',
+                        datos: results[0]});
+        }
     }
 );
 
