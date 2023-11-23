@@ -40,15 +40,15 @@ app.get('/city',(req,res)=>{
 
 });
 
-app.post('/',(req,res)=>{
+app.post('/city',(req,res)=>{
     res.json({mensaje: "Server Express respondiendo a Post"});
 })
 
-app.delete('/',(req,res)=>{
+app.delete('/city',(req,res)=>{
     res.json({mensaje: "Server Express respondiendo a Delete"});
 })
 
-app.patch('/',(req,res)=>{
+app.patch('/city',(req,res)=>{
     res.json({mensaje: "Server Express respondiendo a Patch"});
 })
 

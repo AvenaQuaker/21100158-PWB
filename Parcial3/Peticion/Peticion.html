@@ -84,13 +84,17 @@ button:hover {
 
         <br>
 
-        <button type="button" id ="btnPeticion">Consulta</button>
+        <button type="button" id ="btnPeticionGET">Consulta</button>
+        <button type="button" id ="btnPeticionPOST">Insertar</button>
+        <button type="button" id ="btnPeticionPATH">Modificar</button>
+        <button type="button" id ="btnPeticionDELETE">Borrar</button>
+
     </form>
     
     <script>
-        document.getElementById("btnPeticion").addEventListener("click",async()=>{
+        document.getElementById("btnPeticionGET").addEventListener("click",async()=>{
 
-            let id=prompt('ID de la Ciudad');
+            let id=document.getElementById('id').value;
 
             let response = await fetch("http://localhost:8083/city?ID=" + id, { method: "GET",});
             let data = await response.json();
