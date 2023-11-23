@@ -36,6 +36,12 @@ header {
     background-position: center center;
     background-size: cover;
     margin-left: -200px;
+    margin-bottom: 10px;
+    transition: transform 0.5s ease;
+}
+
+.Logo:hover {
+    transform: scale(1.2);
 }
 
 .FotoInicial {
@@ -123,6 +129,24 @@ section {
     flex-direction: column;
     text-align: center;
 }
+
+#InicioDividido {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#InicioDividido img{
+    width: 100%;
+    height: 48vh;
+}
+
+#Informacion {
+    text-align: left;
+    font-size:medium;
+}
+
 
 section#inicio p {
     margin-top: -15px;
@@ -472,14 +496,33 @@ form label, form p {
         height: 30vh;
     }
 
+    #InicioDividido img {
+        width: 100%;
+        height: 28vh;
+    }
+
+    #Informacion {
+        font-size: x-small;
+    }
+
+    .Titulo {
+        width: 300px; 
+        height: 40px; 
+        background: url('Titulo.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        margin-left:-100px;
+    }
+    
     .Logo {
-        width: 160px; 
-        height: 50px; 
+        width: 140px; 
+        height: 60px; 
         background: url('Logo.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
-        margin-left: -170px;
+        margin-left: -150px;
     }
 
     section {
@@ -521,5 +564,36 @@ form label, form p {
 
 }
 
+@media screen and (max-width: 600px) {
+    #Informacion {
+        font-size: xx-small;
+    }
+
+    section .container {
+        font-size: small;
+    }
+
+    .Titulo {
+        width: 300px; 
+        height: 40px; 
+        background: url('Titulo.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        margin-left:-100px;
+    }
+    
+    .Logo {
+        width: 100px; 
+        height: 30px; 
+        background: url('Logo.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        margin-left: -110px;
+        margin-bottom: 10px;
+        transition: transform 0.5s ease;
+    }
+}
 
 
