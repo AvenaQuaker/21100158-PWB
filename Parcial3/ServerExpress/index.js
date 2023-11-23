@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     port: 8082
 });
 
-connection.query( 'SELECT * FROM city;',
+connection.query( 'SELECT * FROM city LIMIT 20',
     function(err, results, fields) {
         console.log(results); 
         console.log(fields); 
@@ -23,8 +23,6 @@ connection.query( 'SELECT * FROM city;',
     }
 );
 
-    
-    
 });
 
 app.post('/',(req,res)=>{
@@ -38,4 +36,5 @@ app.delete('/',(req,res)=>{
 app.listen(8083,(req,res)=>{
     console.log('Servidor express corriendo en puerto 8083');
 });
+
 

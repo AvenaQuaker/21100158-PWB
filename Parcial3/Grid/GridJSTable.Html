@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridJS</title>
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+</head>
+<body>
+<div id ='wrapper'></div>
+
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="src/index.js"></script>
+
+<script>
+    new gridjs.Grid({
+        columns: ['ID','Nombre','Codigo','Distrito','Poblacion'],
+        server: {
+            url: "http://localhost:8083/city",
+            then: data => data.results.map(ciudad => [ciudad.ID, ciudad.Name, ciudad.CountryCode, ciudad.District, ciudad.Population])
+        }
+    }).render(document.getElementById('wrapper'));
+</script>
+</body>
+</html>
