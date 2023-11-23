@@ -5,8 +5,6 @@ const mysql = require('mysql2');
 
 app.use(cors());
 
-app.get('/city',(req,res)=>{
-
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -15,11 +13,11 @@ const connection = mysql.createConnection({
     port: 8082
 });
 
-connection.query( 'SELECT * FROM city LIMIT 20',
-    function(err, results, fields) {
+app.get('/city',(req,res)=>{
+connection.query( 'SELECT * FROM city LIMIT 20', function(err, results, fields) {
         console.log(results); 
         console.log(fields); 
-        res.json({results});
+        res.json(results);
     }
 );
 
@@ -31,6 +29,10 @@ app.post('/',(req,res)=>{
 
 app.delete('/',(req,res)=>{
     res.json({mensaje: "Server Express respondiendo a Delete"});
+})
+
+app.patch('/',(req,res)=>{
+    res.json({mensaje: "Server Express respondiendo a Patch"});
 })
 
 app.listen(8083,(req,res)=>{

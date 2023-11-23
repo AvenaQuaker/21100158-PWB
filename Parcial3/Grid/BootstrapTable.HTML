@@ -11,18 +11,8 @@
 
     </head>
     <body>
-        <table id="table" data-url="http://localhost:8083/city">
-            <thead>
-            <tr>
-                <th data-field="ID">ID</th>
-                <th data-field="Name">Nombre</th>
-                <th data-field="CountryCode">CodigoCiudad</th>
-                <th data-field="District">Distrito</th>
-                <th data-field="Population">Poblacion</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
+        <table id="table">
+            
         </table>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
@@ -34,10 +24,10 @@
             $('#table').bootstrapTable ({
             url: 'http://localhost:8083/city',
             columns:   [{ field: 'ID', title: 'ID' }, 
-                        { field: 'Name', title: 'Nombre' }, 
-                        { field: 'CountryCode', title: 'CodigoCiudad' }, 
-                        { field: 'District', title: 'Distrito' }, 
-                        { field: 'Population', title: 'Poblacion' }]
+                        { field: 'Name', title: 'Name' }, 
+                        { field: 'CountryCode', title: 'CountryCode' }, 
+                        { field: 'District', title: 'District' }, 
+                        { field: 'Population', title: 'Population' }]
             })
         });
     </script>

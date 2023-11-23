@@ -5,15 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PeticionCORS</title>
 </head>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+</style>
 <body>
-    <form>
+    <h2>Formulario Básico de Ciudades</h2>
+
+    <form action="" method="get">
+        <label for="campo1">ID:</label>
+        <input type="number" id="campo1" name="id" placeholder="Ingrese el ID">
+
+        <br>
+
+        <label for="campo2">Nombre:</label>
+        <input type="text" id="campo2" name="name" placeholder="Ingrese el Nombre">
+
+        <br>
+
+        <label for="campo3">CodigoCiudad:</label>
+        <input type="text" id="campo3" name="countrycode" placeholder="Ingrese el Codigo">
+
+        <br>
+
+        <label for="campo4">Distrito:</label>
+        <input type="text" id="campo4" name="district" placeholder="Ingrese el Distrito">
+
+        <br>
+
+        <label for="campo5">Poblacion:</label>
+        <input type="number" id="campo5" name="population" placeholder="Ingrese la Poblacion">
+
+        <br>
+
         <button type="button" id ="btnPeticion">Peticion</button>
     </form>
+    
     <script>
         document.getElementById("btnPeticion").addEventListener("click",async()=>{
             let response = await fetch("http://localhost:8083", { method: "GET",});
             let data = await response.text();
             console.log(data);
+
+            if(data.status=0){
+                alert(data.mensaje)
+            }
+            else
+            {
+                console.log(data.datos)
+                document.getElementById("id").value=data.datos.ID
+                document.getElementById("name").value=data.datos.Name
+                document.getElementById("countrycode").value=data.datos.CountryCode
+                document.getElementById("district").value=data.datos.District
+                document.getElementById("population").value=data.datos.Polulation
+            }
         });
     </script>
 </body>
