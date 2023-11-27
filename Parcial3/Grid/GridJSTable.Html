@@ -16,8 +16,8 @@
     new gridjs.Grid({
         columns: ['ID','Nombre','Codigo','Distrito','Poblacion'],
         server: {
-            url: "http://localhost:8083/city",
-            then: data => data.results.map(ciudad => [ciudad.ID, ciudad.Name, ciudad.CountryCode, ciudad.District, ciudad.Population])
+            url: "http://localhost:8083",
+            then: data => data.map(ciudad => [ciudad.ID, ciudad.Name, ciudad.CountryCode, ciudad.District, ciudad.Population])
         }
     }).render(document.getElementById('wrapper'));
 </script>
