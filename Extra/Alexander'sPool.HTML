@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div id="Factura">
-                        <input type='checkbox'> <label>Desea Factura?</label>
+                        <input type='checkbox' id="Fact"> <label>Desea Factura?</label>
                     </div>
                     <div>
                         <button type="button" class="btnModal" id="MostrarMensaje">Reserva Ahora</button>
@@ -170,8 +170,27 @@
         <p>&copy;Alexander's Pool</p>
     </footer>
 
+    <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
     <script>
         const Arreglo = ['Prueba1','Prueba2','Prueba3'];
+        const Clausulas = [
+                'QUEDA EXPRESAMENTE PROHIBIDO SUB ARRENDAR O TRASPASAR TODA PARTE DEL INMUEBLE ARRENDADOR.',
+                'EL ARRENDATARIO RECIBE EL INMUEBLE CON TODO EL SERVICIO SANITARIO EN PERFECTO ESTADO EL CUAL SE COMPROMETE DEL LA MISMA MANERA.',
+                'EN CASO DE UN DAÑO AL MOBILIARIO TENDRA QUE HACERSE RESPONSABLE EL ARRENDATARIO,',
+                'DEBERA DE LIQUIDAR EN SU TOTALIDAD UNA SEMANA ANTES DE FECHA DEL EVENTO',
+                'ES OBLIGATORIO USAR ROPA ADECUADA',
+                'SE PROHIBE COMER, FUMAR Y BEBER DENTRO DE LA ALBERCA LA ALBERCA Alexanders Pool NO SE HACE RESPONSABLE EN CASO DE ROBO O CONFLICTOS AJENOS AL NEGOCIO.',
+                'AL FINAL DEL EVENTO FAVOR DE TIRAR SU BASURA',
+            ]
+
+        function FechaActual(){
+            const fechaActual = new Date();
+            const año = fechaActual.getFullYear();
+            const mes = fechaActual.getMonth() + 1; 
+            const dia = fechaActual.getDate();
+            const fechaFormateada = `${año}/${mes < 10 ? '0' + mes : mes}/${dia < 10 ? '0' + dia : dia}`;
+            return fechaFormateada;
+        }
 
         $("#MostrarMensaje").on("click", function() {
             if($("#nombre").val()!=""&&$("#telefono").val()!=""&&$("#timedatePicker").val()!="")
@@ -210,7 +229,103 @@
             $("#sidebar").toggleClass("show-sidebar");
         });
         
-            $(document).ready(function () {
+        $('#MostrarMensaje').on('click',async()=>{
+            var Fecha = $('#timedatePicker').val();
+            var Nombre = $('#nombre').val();
+            var Telefono = $('#telefono').val();
+            var Email = $('#email').val();
+            var Anticipo = $('#anticipo-text');
+            var MFinal = $('#monto-final-text');
+
+            props.contact.name = Nombre;
+            props.contact.phone = Telefono;
+            props.contact.email = Email;
+            props.invoice.invDate = "Fecha de Pago: " + FechaActual();
+            props.invoice.invGenDate = "Fecha del Evento: " + Fecha; 
+            props.contact.address = Anticipo.text() + ' ' + MFinal.text();
+
+            if($('#Fact').is(':checked')){
+                var pdfObject = jsPDFInvoiceTemplate.default(props);
+
+            console.log("PDF Creado",pdfObject)
+            }
+        })
+
+        var props = {
+        outputType: jsPDFInvoiceTemplate.OutputType.Save,
+    returnJsPDFDocObject: true,
+    fileName: "Factura",
+    orientationLandscape: true,
+    compress: true,
+    logo: {
+        src: "Logo.png",
+        type: 'PNG', //optional, when src= data:uri (nodejs case)
+        width: 53.33, //aspect ratio = width/height
+        height: 26.66,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+    },
+    stamp: {
+        inAllPages: true, //by default = false, just in the last page
+        src: "https://raw.githubusercontent.com/edisonneza/jspdf-invoice-template/demo/images/qr_code.jpg",
+        type: 'JPG', //optional, when src= data:uri (nodejs case)
+        width: 20, //aspect ratio = width/height
+        height: 20,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+    },
+    business: {
+        name: "Alexander's Pool",
+        address: "Valdez Reyna 503 colonia Nueva Era",
+        phone: "Teléfono: 867-141-7913",
+        website: "https://www.facebook.com/profile.php?id=100057492817523",
+    },
+    contact: {
+        label: "Contratacion realizada por:",
+        name: "Contacto",
+        address: '',
+        phone: "432432",
+        email: "423432@32.com",
+    },
+    invoice: {
+        label: "Reserva#",
+        num: 1,
+        invDate: '24/nov/23',
+        invGenDate:'12/y=/64',
+        headerBorder: false,
+        tableBodyBorder: false,
+        header: [
+          {
+            title: "ID#", 
+            style: { 
+              width: 10 
+            } 
+          }, 
+          { 
+            title: "Clausula",
+            style: {
+            width: 200
+            } 
+          }, 
+        ],
+        table: Array.from(Clausulas, (item, index)=>([
+            index,
+            item
+        ])),
+        invDescLabel: "NOTA:",
+        invDesc: "Este documento es válido como comprobante de la transacción realizada. Para cualquier consulta o reclamo, por favor, comuníquese con nuestro servicio de atención al cliente dentro de los próximos 30 días a partir de la fecha de emisión de esta factura. Toda devolución está sujeta a nuestras políticas de reembolso y puede requerir la presentación de este comprobante, En caso de cancelacion por parte del contratante, no habra devolucion del anticipo, ademas se le cobrara un monto de 1000$",
+    },
+    footer: {
+        text: "Esta factura fue creada de forma automatica, cualquier problema contacte al administrador",
+    },
+    pageEnable: true,
+    pageLabel: "Page ",
+};
+        $(document).ready(function () {
             const modal = $("#myModal");
             const abrirModal = $("#abrir-modal");
             const cerrarModal = $(".close");
