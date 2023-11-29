@@ -30,6 +30,7 @@
         <button type="button" id ="btnPeticionPOST">Insertar</button>
         <button type="button" id ="btnPeticionPATH">Modificar</button>
         <button type="button" id ="btnPeticionDELETE">Borrar</button>
+        <button type="button" id ="btnPDF">Crear PDF</button>
 
     </form>
 
@@ -57,16 +58,15 @@
                 console.log(data.datos)
                 document.getElementById("ID").value=data.datos.ID
                 document.getElementById("Name").value=data.datos.Name
-                document.getElementById("CountryCode").value=data.datos.CountryCode
+                document.getElementById("CountryCode").value=data.datos.CountryCode 
                 document.getElementById("District").value=data.datos.District
                 document.getElementById("Population").value=data.datos.Population
             }
         });
 
         document.getElementById("btnPeticionPOST").addEventListener("click",async()=>{
-            let headersList = {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+            
+            let headersList = { "Content-Type": "application/x-www-form-urlencoded"}
 
             let id=document.getElementById('ID').value;
             let name=document.getElementById('Name').value;
@@ -88,6 +88,36 @@
                 console.log(data.datos)
             }
         });
+
+        document.getElementById("btnPeticionPATH").addEventListener("click", async () => {
+            
+            let headersList = { "Content-Type": "application/json" }
+            
+            let id = document.getElementById('ID').value;
+            let name = document.getElementById('Name').value;
+            let countrycode = document.getElementById('CountryCode').value;
+            let district = document.getElementById('District').value;
+            let population = document.getElementById('Population').value;
+            
+            let Contenido = {
+                ID: id,
+                Name: name,
+                CountryCode: countrycode,
+                District: district,
+                Population: population
+            }
+
+            let response = await fetch(`http://localhost:8083/city?ID=${id}`, { method: "PATCH", headers: headersList, body: JSON.stringify(Contenido)});
+            let data = await response.json();
+            console.log(data);
+            
+            if (data.status == 0) {
+                alert(data.mensaje);
+            } else {
+                console.log(data.datos);
+            }
+        });
+
 
         document.getElementById("btnPeticionDELETE").addEventListener("click",async()=>{
             let id=document.getElementById('ID').value;

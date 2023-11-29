@@ -96,30 +96,29 @@ app.delete('/city',(req,res)=>{
 });
 
 app.patch('/city',(req,res)=>{
-    console.log(req.query.ID);
-    let consulta = "";
+    const { ID, Name, CountryCode, District, Population } = req.body;
 
-    if(typeof(req.query.ID)=='undefined'){
-        consulta = 'SELECT * FROM city';
-    }else{
-        consulta = 'SELECT * FROM city WHERE ID=' + (req.query.ID)
+    if (!ID || !Name || !CountryCode || !District || !Population) {
+        res.status(400).json({ status: 0, mensaje: 'Faltan campos requeridos para actualizar el registro' });
+        return;
     }
 
-    console.log(consulta)
-    
-    connection.query(consulta, function(err, results, fields) {
-        if(results.length==0){
-            res.json({  status:0,
-                        mensaje:'ID de la Ciudad no Existe',
-                        datos: {}});
-        }else{
-            res.json({  status:1,
-                        mensaje:'Usuario Encontrado',
-                        datos: results[0]});
+    const Actualizar = "UPDATE city SET Name = '" + Name + "', CountryCode = '" + CountryCode + "', District = '" + District + "', Population = " + Population + " WHERE ID = " + ID;
+    console.log(Actualizar);
+
+    connection.query(Actualizar, (err, results, fields) => {
+        if (results.affectedRows === 1) {
+            res.json({ status: 1, mensaje: 'Se ha Actualizado el nuevo registro', datos: {
+                ID: ID,
+                Name: Name,
+                CountryCode: CountryCode,
+                District: District,
+                Population: Population
+            } });
+        } else {
+            res.status(500).json({ status: 0, mensaje: 'Ocurrió un error en la actualizacion', datos: {} });
         }
-    }
-);
-
+    });
 });
 
 app.listen(8083,(req,res)=>{
