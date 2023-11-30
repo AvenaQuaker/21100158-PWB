@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div id="Factura">
-                        <input type='checkbox' id="Fact"> <label>Desea Factura?</label>
+                        <input type='checkbox' id="Fact"> <label>Imprimir Contrato?</label>
                     </div>
                     <div>
                         <button type="button" class="btnModal" id="MostrarMensaje">Reserva Ahora</button>
@@ -165,9 +165,13 @@
             <p>Teléfono: 867-141-7913</p>
         </div>
     </section>
+    
+    <div id='Preguntas' class="circle">
+        <a href="Preguntas.HTML" class="question-mark">?</a>
+    </div>
 
     <footer>
-        <p>&copy;Alexander's Pool</p>
+        <p>&copy; Alexander's Pool! </p>
     </footer>
 
     <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
@@ -325,6 +329,7 @@
     pageEnable: true,
     pageLabel: "Page ",
 };
+       
         $(document).ready(function () {
             const modal = $("#myModal");
             const abrirModal = $("#abrir-modal");

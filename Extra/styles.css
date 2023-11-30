@@ -98,6 +98,7 @@ header {
     padding: 10px;
     font-size: 24px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #Boton-Final {
@@ -107,6 +108,7 @@ header {
     padding: 10px;
     font-size: 24px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #Boton-Inicio:hover {
@@ -213,6 +215,7 @@ h1, h2 {
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btnModal {
@@ -224,6 +227,7 @@ h1, h2 {
     border-radius: 10px;
     font-weight: bold;
     font-size:medium;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn:hover{
@@ -250,6 +254,7 @@ footer {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
+    animation: aparecer 0.5s ease;
 }
 
 .modal-content {
@@ -320,6 +325,7 @@ footer {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2; 
+    animation: aparecer 0.5s ease;
 }
 
 #Error {
@@ -331,6 +337,7 @@ footer {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2; 
+    animation: aparecer 0.5s ease;
 }
 
 #Advertencia {
@@ -342,6 +349,7 @@ footer {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2; 
+    animation: aparecer 0.5s ease;
 }
 
 #Mensaje .modal-content {
@@ -460,6 +468,88 @@ form label, form p {
     cursor: pointer;
 }
 
+footer p {
+    font-size: large;
+}
+
+.circle {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    background-color: orange; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+    z-index: 999; 
+    transition: all 0.3s ease;
+}
+
+.question-mark {
+    font-size: 45px; 
+    color: white; 
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.circle:hover {
+    width: 100px;
+    height: 100px;
+}
+
+#navbar-left a {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 23px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #103780;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#navbar-left a:hover {
+    background-color: #1949a3;
+    color: #fff;
+}
+
+#preguntas-frecuentes {
+    background-color: #fff;
+    margin: 20px auto !important;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 150vh;
+    max-width: 50%; 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: small;
+}
+
+.pregunta {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 @media screen and (max-height: 800px) {
     .Imagenes img {
         width: 100%;
@@ -477,6 +567,28 @@ form label, form p {
         border-radius: 10px;
         font-weight: bold;
         font-size:medium;
+    }
+
+    #preguntas-frecuentes {
+        font-size: x-small !important;
+    }
+
+    .pregunta {
+        margin-bottom: 40px !important;
+    }
+
+    #Informacion {
+        font-size: x-small;
+    }
+}
+
+@media screen and (max-height: 1100px) {
+    #preguntas-frecuentes {
+        font-size:large;
+    }
+
+    .pregunta {
+        margin-bottom: 50px;
     }
 }
 
@@ -564,7 +676,7 @@ form label, form p {
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     #Informacion {
         font-size: xx-small;
     }
@@ -593,6 +705,12 @@ form label, form p {
         margin-left: -110px;
         margin-bottom: 10px;
         transition: transform 0.5s ease;
+    }
+
+    #preguntas-frecuentes {
+        height: 100vh;
+        max-width: 70%; 
+
     }
 }
 
