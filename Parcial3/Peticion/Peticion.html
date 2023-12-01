@@ -31,11 +31,18 @@
         <button type="button" id ="btnPeticionPATH">Modificar</button>
         <button type="button" id ="btnPeticionDELETE">Borrar</button>
         <button type='button' id ='btnPDF'>Crear PDF</button>
-
     </form>
 
     <div id="Tabla">
         <div id ='wrapper'></div>
+    </div>
+
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-message"></p>
+        </div>
     </div>
 
     <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
@@ -52,7 +59,7 @@
             console.log(data);
 
             if(data.status==0){
-                alert(data.mensaje)
+                MostrarModal("GET",data.mensaje);
             }
             else
             {
@@ -82,7 +89,7 @@
             console.log(data);
 
             if(data.status==0){
-                alert(data.mensaje)
+                MostrarModal("POST",data.mensaje);
             }
             else
             {
@@ -113,7 +120,7 @@
             console.log(data);
             
             if (data.status == 0) {
-                alert(data.mensaje);
+                MostrarModal("PATH",data.mensaje);
             } else {
                 console.log(data.datos);
             }
@@ -127,7 +134,7 @@
             let data = await response.json();
 
             if(data.status==0){
-                alert(data.mensaje)
+                MostrarModal("DELETE",data.mensaje);
             }
             else
             {
@@ -269,6 +276,28 @@
                 then: data => data.map(ciudad => [ciudad.ID, ciudad.Name, ciudad.CountryCode, ciudad.District, ciudad.Population])
             }
         }).render(document.getElementById('wrapper'));
+        }
+
+        function MostrarModal(action,message) {
+            var modal = document.getElementById("miModal");
+            var MensajeModal = document.getElementById("modal-message");
+            var TituloModal = document.getElementById("modal-title")
+            
+            TituloModal.textContent = "ERROR en la Petición " + action;
+            MensajeModal.textContent = message;
+
+            modal.style.display = "block";
+
+            var Cerrar = document.getElementsByClassName("close")[0];
+            Cerrar.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
         }
     </script>
 </body>

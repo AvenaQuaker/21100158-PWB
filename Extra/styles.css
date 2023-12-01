@@ -536,8 +536,6 @@ footer p {
     border-bottom: 1px solid #ddd;
 }
 
-
-
 @keyframes aparecer {
     from {
         opacity: 0;
@@ -548,7 +546,6 @@ footer p {
         transform: translateY(0);
     }
 }
-
 
 @media screen and (max-height: 800px) {
     .Imagenes img {
