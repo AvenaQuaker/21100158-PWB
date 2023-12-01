@@ -95,31 +95,56 @@ app.delete('/city',(req,res)=>{
 
 });
 
-app.patch('/city',(req,res)=>{
+app.patch('/city', (req, res) => {
     const { ID, Name, CountryCode, District, Population } = req.body;
 
-    if (!ID || !Name || !CountryCode || !District || !Population) {
-        res.status(400).json({ status: 0, mensaje: 'Faltan campos requeridos para actualizar el registro' });
+    if (!ID || (!Name && !CountryCode && !District && !Population)) {
+        res.status(400).json({ status: 0, mensaje: 'Se requiere al menos un campo para actualizar' });
         return;
     }
 
-    const Actualizar = "UPDATE city SET Name = '" + Name + "', CountryCode = '" + CountryCode + "', District = '" + District + "', Population = " + Population + " WHERE ID = " + ID;
-    console.log(Actualizar);
+    let actualizaciones = [];
+    let values = [];
 
-    connection.query(Actualizar, (err, results, fields) => {
+    if (Name) {
+        actualizaciones.push('Name = ?');
+        values.push(Name);
+    }
+    if (CountryCode) {
+        actualizaciones.push('CountryCode = ?');
+        values.push(CountryCode);
+    }
+    if (District) {
+        actualizaciones.push('District = ?');
+        values.push(District);
+    }
+    if (Population) {
+        actualizaciones.push('Population = ?');
+        values.push(Population);
+    }
+
+    const actualizacionSQL = `UPDATE city SET ${actualizaciones.join(', ')} WHERE ID = ?`;
+    values.push(ID);
+
+    connection.query(actualizacionSQL, values, (err, results, fields) => {
         if (results.affectedRows === 1) {
-            res.json({ status: 1, mensaje: 'Se ha Actualizado el nuevo registro', datos: {
-                ID: ID,
-                Name: Name,
-                CountryCode: CountryCode,
-                District: District,
-                Population: Population
-            } });
+            res.json({
+                status: 1,
+                mensaje: 'Se ha actualizado el registro correctamente',
+                datos: {
+                    ID: ID,
+                    Name: Name,
+                    CountryCode: CountryCode,
+                    District: District,
+                    Population: Population
+                }
+            });
         } else {
-            res.status(500).json({ status: 0, mensaje: 'Ocurrió un error en la actualizacion', datos: {} });
+            res.status(500).json({ status: 0, mensaje: 'Ocurrió un error en la actualización', datos: {} });
         }
     });
 });
+
 
 app.listen(8083,(req,res)=>{
     console.log('Servidor express corriendo en puerto 8083');
