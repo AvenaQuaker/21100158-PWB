@@ -52,31 +52,27 @@ app.get('/PDF', (req, res) => {
             return;
         }
 
-        // Crear un nuevo documento PDF
-        const doc = new PDFDocument();
+        const PDF = new PDFDocument();
+        PDF.text('Datos de la ciudad:', 50, 50);
 
-        // Establecer el encabezado y escribir datos
-        doc.text('Datos de la ciudad:', 50, 50);
-
-        let verticalOffset = 70;
+        let Posicion = 70;
         results.forEach((city) => {
-            doc.text(`ID: ${city.ID}, Name: ${city.Name}, CountryCode: ${city.CountryCode}, District: ${city.District}, Population: ${city.Population}`, 50, verticalOffset);
-            verticalOffset += 20;
+            PDF.text(`ID: ${city.ID}, Name: ${city.Name}, CountryCode: ${city.CountryCode}, District: ${city.District}, Population: ${city.Population}`, 50, Posicion);
+            Posicion += 30;
         });
 
-        // Guardar el documento y enviar como respuesta
-        const pdfFileName = 'ciudades.pdf';
-        const pdfStream = fs.createWriteStream(pdfFileName);
+        const NombrePDF = 'Ciudades.pdf';
+        const PDFStream = fs.createWriteStream(NombrePDF);
 
-        doc.pipe(pdfStream);
-        doc.end();
+        PDF.pipe(PDFStream);
+        PDF.end();
 
-        pdfStream.on('finish', () => {
-            res.download(pdfFileName, (err) => {
+        PDFStream.on('finish', () => {
+            res.download(NombrePDF, (err) => {
                 if (err) {
                     res.status(500).json({ status: 0, mensaje: 'Error al descargar el archivo PDF' });
                 } else {
-                    fs.unlink(pdfFileName, (err) => {
+                    fs.unlink(NombrePDF, (err) => {
                         if (err) {
                             console.error('Error al borrar el archivo PDF', err);
                         }
