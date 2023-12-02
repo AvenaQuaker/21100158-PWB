@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const mysql = require('mysql2');
+const fs = require('fs');
+const PDFDocument = require('pdfkit');  
 
 app.use(cors());
 app.use(express.json()); 
@@ -43,6 +45,48 @@ app.get('/city',(req,res)=>{
 );
 });
 
+app.get('/PDF', (req, res) => {
+    connection.query('SELECT * FROM city', function (err, results, fields) {
+        if (err) {
+            res.status(500).json({ status: 0, mensaje: 'Error al obtener datos de la base de datos' });
+            return;
+        }
+
+        // Crear un nuevo documento PDF
+        const doc = new PDFDocument();
+
+        // Establecer el encabezado y escribir datos
+        doc.text('Datos de la ciudad:', 50, 50);
+
+        let verticalOffset = 70;
+        results.forEach((city) => {
+            doc.text(`ID: ${city.ID}, Name: ${city.Name}, CountryCode: ${city.CountryCode}, District: ${city.District}, Population: ${city.Population}`, 50, verticalOffset);
+            verticalOffset += 20;
+        });
+
+        // Guardar el documento y enviar como respuesta
+        const pdfFileName = 'ciudades.pdf';
+        const pdfStream = fs.createWriteStream(pdfFileName);
+
+        doc.pipe(pdfStream);
+        doc.end();
+
+        pdfStream.on('finish', () => {
+            res.download(pdfFileName, (err) => {
+                if (err) {
+                    res.status(500).json({ status: 0, mensaje: 'Error al descargar el archivo PDF' });
+                } else {
+                    fs.unlink(pdfFileName, (err) => {
+                        if (err) {
+                            console.error('Error al borrar el archivo PDF', err);
+                        }
+                    });
+                }
+            });
+        });
+    });
+});
+
 app.post('/city', (req, res) => {
     const { ID, Name, CountryCode, District, Population } = req.body;
 
@@ -68,7 +112,6 @@ app.post('/city', (req, res) => {
         }
     });
 });
-
 
 app.delete('/city',(req,res)=>{
     console.log(req.query.ID);
@@ -144,7 +187,6 @@ app.patch('/city', (req, res) => {
         }
     });
 });
-
 
 app.listen(8083,(req,res)=>{
     console.log('Servidor express corriendo en puerto 8083');

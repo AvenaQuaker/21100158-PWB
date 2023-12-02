@@ -143,9 +143,21 @@
         });
 
         document.getElementById('btnPDF').addEventListener('click',async()=>{
-            var pdfObject = jsPDFInvoiceTemplate.default(props);
-
-            console.log("PDF Creado",pdfObject)
+            
+            const response = await fetch("http://localhost:8083/PDF", { method: "GET" });
+            const blob = await response.blob();
+            
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", "ciudades.pdf");
+            document.body.appendChild(link);
+            link.click();
+            
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            
+            console.error("Error al descargar el PDF:", error);
         })
 
         var props = {
