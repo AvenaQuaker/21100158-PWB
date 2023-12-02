@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const mysql = require('mysql2');
-const fs = require('fs');
-const PDFDocument = require('pdfkit');  
+const { jsPDF } = require('jspdf');
+const path = require('path');
 
 app.use(cors());
 app.use(express.json()); 
@@ -46,41 +46,13 @@ app.get('/city',(req,res)=>{
 });
 
 app.get('/PDF', (req, res) => {
-    connection.query('SELECT * FROM city', function (err, results, fields) {
-        if (err) {
-            res.status(500).json({ status: 0, mensaje: 'Error al obtener datos de la base de datos' });
-            return;
-        }
+    const text = `Datos de la Ciudad \n\nID: ${req.query.ID}\nName: ${req.query.Name}\nCountry Code: ${req.query.CountryCode}\nDistrict: ${req.query.District}\nPopulation: ${req.query.Population}`;
 
-        const PDF = new PDFDocument();
-        PDF.text('Datos de la ciudad:', 50, 50);
-
-        let Posicion = 70;
-        results.forEach((city) => {
-            PDF.text(`ID: ${city.ID}, Name: ${city.Name}, CountryCode: ${city.CountryCode}, District: ${city.District}, Population: ${city.Population}`, 50, Posicion);
-            Posicion += 30;
-        });
-
-        const NombrePDF = 'Ciudades.pdf';
-        const PDFStream = fs.createWriteStream(NombrePDF);
-
-        PDF.pipe(PDFStream);
-        PDF.end();
-
-        PDFStream.on('finish', () => {
-            res.download(NombrePDF, (err) => {
-                if (err) {
-                    res.status(500).json({ status: 0, mensaje: 'Error al descargar el archivo PDF' });
-                } else {
-                    fs.unlink(NombrePDF, (err) => {
-                        if (err) {
-                            console.error('Error al borrar el archivo PDF', err);
-                        }
-                    });
-                }
-            });
-        });
-    });
+    const PDF = new jsPDF();
+    PDF.text(text,10,10);
+    let archivoPDF = path.join(__dirname,'Ciudades.pdf');
+    PDF.save(archivoPDF);
+    res.sendFile(archivoPDF);
 });
 
 app.post('/city', (req, res) => {

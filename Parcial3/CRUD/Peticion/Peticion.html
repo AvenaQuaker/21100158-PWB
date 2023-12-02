@@ -143,27 +143,18 @@
         });
 
         document.getElementById('btnPDF').addEventListener('click',async()=>{
-            try
-            {
-                const response = await fetch("http://localhost:8083/PDF", { method: "GET" });
-                const blob = await response.blob();
-                
-                const url = window.URL.createObjectURL(new Blob([blob]));
-                const link = document.createElement("a");
-                link.href = url;
-                link.setAttribute("download", "Ciudades.pdf");
-                document.body.appendChild(link);
-                link.click();
+            let id=document.getElementById('ID').value;
+            let name=document.getElementById('Name').value;
+            let countrycode=document.getElementById('CountryCode').value;
+            let district=document.getElementById('District').value;
+            let population=document.getElementById('Population').value;
 
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
+            let url = `http://localhost:8083/PDF?ID=${id}&Name=${name}&CountryCode=${countrycode}&District=${district}&Population=${population}`;
 
-                console.log('Archivo Descargado con Exito')
-            }
-            catch
-            {
-                MostrarModal("PDF", error);
-            }
+            let response = await fetch(url, { method: "GET"});
+            let data = await response.blob();
+            let archivoPDF = URL.createObjectURL(data);
+            window.open(archivoPDF);
         })
 
         var props = {
