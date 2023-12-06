@@ -4,6 +4,7 @@ const app = express();
 const mysql = require('mysql2');
 const { jsPDF } = require('jspdf');
 const path = require('path');
+const Mensaje = 'Hola que onda';
 
 app.use(cors());
 app.use(express.json()); 
