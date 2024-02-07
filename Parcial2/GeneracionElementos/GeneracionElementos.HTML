@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeneracionElementos</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New';
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor"></div>
+
+    <script>
+        let encabezados = ["Título", "Director", "Año de Lanzamiento", "Género", "Calificación"];
+        let datos = [
+            {
+                Título: "Forrest Gump",
+                Director: "Robert Zemeckis",
+                "Año de Lanzamiento": 1994,
+                Género: "Drama",
+                Calificación: 8.8
+            },
+            {
+                Título: "Inception",
+                Director: "Christopher Nolan",
+                "Año de Lanzamiento": 2010,
+                Género: "Sci-Fi",
+                Calificación: 8.8
+            },
+            {
+                Título: "Pulp Fiction",
+                Director: "Quentin Tarantino",
+                "Año de Lanzamiento": 1994,
+                Género: "Crime",
+                Calificación: 8.9
+            },
+            {
+                Título: "The Godfather",
+                Director: "Francis Ford Coppola",
+                "Año de Lanzamiento": 1972,
+                Género: "Crime",
+                Calificación: 9.2
+            },
+            {
+                Título: "The Shawshank Redemption",
+                Director: "Frank Darabont",
+                "Año de Lanzamiento": 1994,
+                Género: "Drama",
+                Calificación: 9.3
+            }
+        ];
+
+        let tab = document.createElement("table");
+        let enc = document.createElement("thead");
+        let fill = document.createElement("tr");
+
+        encabezados.forEach(elemento => {
+            let th = document.createElement("th");
+            th.innerText = elemento;
+            fill.appendChild(th);
+        });
+
+        enc.appendChild(fill);
+        tab.appendChild(enc);
+
+        let tbody = document.createElement("tbody");
+
+        datos.forEach(function (pelicula) {
+            let fila = document.createElement("tr");
+
+            encabezados.forEach(function (encabezado) {
+                let td = document.createElement("td");
+                td.innerText = pelicula[encabezado];
+                fila.appendChild(td);
+            });
+
+            tbody.appendChild(fila);
+        });
+
+        tab.appendChild(tbody);
+
+        document.getElementById("contenedor").appendChild(tab);
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MediaQuare </title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            background-color: rgb(141, 139, 139);
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            line-height: 80px;
+            position: static;
+            border: 2px solid rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            height: 10%;
+            width: 100%;
+        }
+
+        .caja {
+            
+            width: calc((100% / 3) - 20px);
+            height: 100px;
+            background-color: rgb(67, 242, 255);
+            border: 1px solid rgb(86, 86, 253);
+            float: left;
+            mask-border-width: 10px;
+            font-family:Verdana;
+            text-align: center;
+            font-weight: bold;
+            font-size: large;
+            line-height: 150px;
+            margin: 10px;
+        }
+
+        @media screen and (max-width: 900px) {
+            #caja1,#caja2 {
+                width: calc((100% / 2) - 20px)
+            }
+            #caja3 {
+            clear: left;
+            width: calc(100% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 300px) {
+            #caja1,#caja2,#caja3 {
+                clear: left;
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head" id="Header">MediaQuare</div>
+    <div class="contenedor">
+        <div id="caja1" class = "caja"> Caja1 </div>
+        <div id="caja2" class = "caja"> Caja2 </div>
+        <div id="caja3" class = "caja"> Caja3</div>
+    </div>
+</body>

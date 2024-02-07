@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeticionCORS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Formulario Básico de Ciudades</h2>
+
+    <form id='formulario'>
+        <label for="ID">ID:</label>
+        <input type="number" id="ID" name='ID' placeholder="Ingrese el ID"><br>
+
+        <label for="Name">Nombre:</label>
+        <input type="text" id="Name" name='Name' placeholder="Ingrese el Nombre"><br>
+
+        <label for="CountryCode">CodigoCiudad:</label>
+        <input type="text" id="CountryCode" name='CountryCode' placeholder="Ingrese el Codigo"><br>
+
+        <label for="District">Distrito:</label>
+        <input type="text" id="District" name='District' placeholder="Ingrese el Distrito"><br>
+
+        <label for="Population">Poblacion:</label>
+        <input type="number" id="Population" name='Population' placeholder="Ingrese la Poblacion"><br>
+
+        <button type="button" id ="btnPeticionGET">Consulta</button>
+        <button type="button" id ="btnPeticionPOST">Insertar</button>
+        <button type="button" id ="btnPeticionPATH">Modificar</button>
+        <button type="button" id ="btnPeticionDELETE">Borrar</button>
+        <button type='button' id ='btnPDF'>Crear PDF</button>
+    </form>
+
+    <div id="Tabla">
+        <div id ='wrapper'></div>
+    </div>
+
+    <div id="miModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
+
+    <script>
+        window.onload = function() { CrearTabla();};
+        
+        document.getElementById("btnPeticionGET").addEventListener("click",async()=>{
+            let id=document.getElementById('ID').value;
+
+            let response = await fetch("http://localhost:8083/city?ID=" + id, { method: "GET",});
+            let data = await response.json();
+            console.log(data);
+
+            if(data.status==0){
+                MostrarModal("GET",data.mensaje);
+            }
+            else
+            {
+                console.log(data.datos)
+                document.getElementById("ID").value=data.datos.ID
+                document.getElementById("Name").value=data.datos.Name
+                document.getElementById("CountryCode").value=data.datos.CountryCode 
+                document.getElementById("District").value=data.datos.District
+                document.getElementById("Population").value=data.datos.Population
+            }
+        });
+
+        document.getElementById("btnPeticionPOST").addEventListener("click",async()=>{
+            
+            let headersList = { "Content-Type": "application/x-www-form-urlencoded"}
+
+            let id=document.getElementById('ID').value;
+            let name=document.getElementById('Name').value;
+            let countrycode=document.getElementById('CountryCode').value;
+            let district=document.getElementById('District').value;
+            let population=document.getElementById('Population').value;
+
+            let Contenido = 'ID='+id+'&Name='+name+'&CountryCode='+countrycode+'&District='+district+'&Population='+population;
+
+            let response = await fetch("http://localhost:8083/city", { method: "POST", body: Contenido, headers: headersList});
+            let data = await response.json();
+            console.log(data);
+
+            if(data.status==0){
+                MostrarModal("POST",data.mensaje);
+            }
+            else
+            {
+                CrearTabla();
+                console.log(data.datos)
+            }
+        });
+
+        document.getElementById("btnPeticionPATH").addEventListener("click", async () => {
+            
+            let headersList = { "Content-Type": "application/json" }
+            
+            let id = document.getElementById('ID').value;
+            let name = document.getElementById('Name').value;
+            let countrycode = document.getElementById('CountryCode').value;
+            let district = document.getElementById('District').value;
+            let population = document.getElementById('Population').value;
+            
+            let Contenido = {
+                ID: id,
+                Name: name,
+                CountryCode: countrycode,
+                District: district,
+                Population: population
+            }
+
+            let response = await fetch(`http://localhost:8083/city?ID=${id}`, { method: "PATCH", headers: headersList, body: JSON.stringify(Contenido)});
+            let data = await response.json();
+            console.log(data);
+            
+            if (data.status == 0) {
+                MostrarModal("PATH",data.mensaje);
+            } else {
+                CrearTabla();
+                console.log(data.datos);
+            }
+        });
+
+        document.getElementById("btnPeticionDELETE").addEventListener("click",async()=>{
+
+            let id=document.getElementById('ID').value;
+
+            let response = await fetch("http://localhost:8083/city?ID=" + id, { method: "DELETE",});
+            let data = await response.json();
+
+            if(data.status==0){
+                MostrarModal("DELETE",data.mensaje);
+            }
+            else
+            {
+                CrearTabla();
+                console.log(data.mensaje)
+            };
+        });
+
+        document.getElementById('btnPDF').addEventListener('click',async()=>{
+            let id=document.getElementById('ID').value;
+            let name=document.getElementById('Name').value;
+            let countrycode=document.getElementById('CountryCode').value;
+            let district=document.getElementById('District').value;
+            let population=document.getElementById('Population').value;
+
+            let url = `http://localhost:8083/PDF?ID=${id}&Name=${name}&CountryCode=${countrycode}&District=${district}&Population=${population}`;
+
+            let response = await fetch(url, { method: "GET"});
+            let data = await response.blob();
+            let archivoPDF = URL.createObjectURL(data);
+            window.open(archivoPDF);
+        })
+
+        function CrearTabla()
+        {
+            document.getElementById('wrapper').innerHTML="";
+
+            new gridjs.Grid({
+                columns: ['ID','Nombre','Codigo','Distrito','Poblacion'],
+                server: {
+                url: "http://localhost:8083",
+                then: data => data.map(ciudad => [ciudad.ID, ciudad.Name, ciudad.CountryCode, ciudad.District, ciudad.Population])
+            }
+        }).render(document.getElementById('wrapper'));
+        }
+
+        function MostrarModal(action,message) {
+            var modal = document.getElementById("miModal");
+            var MensajeModal = document.getElementById("modal-message");
+            var TituloModal = document.getElementById("modal-title")
+            
+            TituloModal.textContent = "ERROR en la Petición " + action;
+            MensajeModal.textContent = message;
+
+            modal.style.display = "block";
+
+            var Cerrar = document.getElementsByClassName("close")[0];
+            Cerrar.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

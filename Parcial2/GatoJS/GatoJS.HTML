@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatoJS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contenedor {
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            background-color: rgb(255, 255, 255);
+            grid-template-columns: 270px 270px 270px;
+            grid-template-rows: 270px 270px 270px;
+            justify-content: center;
+            justify-items: stretch;
+            align-content: center;
+            align-items: stretch;
+        }
+
+        .caja {
+            background-color: rgb(104, 231, 248);
+            border:2px solid black;
+            font-size:150px;
+            text-align: center;
+            line-height: 6cm;
+        }
+
+        .caja img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        #Caja11{
+            font-size:50px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="cont" class="contenedor">
+        <div id="Caja1" class = "caja"></div>
+        <div id="Caja2" class = "caja"></div>
+        <div id="Caja3" class = "caja"></div>
+        <div id="Caja4" class = "caja"></div>
+        <div id="Caja5" class = "caja"></div>
+        <div id="Caja6" class = "caja"></div>
+        <div id="Caja7" class = "caja"></div>
+        <div id="Caja8" class = "caja"></div>
+        <div id="Caja9" class = "caja"></div>
+        <div id="Caja10"></div>
+        <div id="Caja11"><button id="btnResetear">Reiniciar Juego</button></div>
+        <div id="Caja12"></div>
+    </div>
+
+    <script>
+        var xo="X";
+        document.getElementById("cont").addEventListener("click",function(e){
+            console.log(e.target.id);
+        if(document.getElementById(e.target.id).innerText==""){
+            var img = document.createElement("img")
+            if(xo=="X"){
+                img.src = "img/x.png";
+                img.alt = "X";
+                xo="O";
+            }
+            else
+            {
+                img.src = "img/o.png";
+                img.alt = "O";
+                xo = "X";
+            }
+            e.target.innerText = "";
+            e.target.appendChild(img);
+        }
+    
+        document.getElementById("btnResetear").addEventListener("click", function () {
+        let cajas = document.querySelectorAll(".caja");
+        cajas.forEach(function (caja) {
+        caja.innerText = "";
+        });
+
+        xo = "X";
+        });
+        })
+    </script>
+</body>

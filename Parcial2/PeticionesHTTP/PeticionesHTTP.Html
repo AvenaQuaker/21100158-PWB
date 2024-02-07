@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeticionesHTTP</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+    body {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image:url("Fondo.jpeg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    #imageContainer {
+    overflow: hidden;
+}
+
+    #imagen {
+    width: 110%;
+    height: 110%;
+}
+
+    #Contenedor {
+        display: grid;
+        grid-template-columns: 70% 30%; 
+        height: 80%;
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #PrimeraP {
+        display: flex;
+        border-width: 10px;
+        max-width: 100%;
+        max-height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #SegundaP {
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    #Boton button {
+        position: relative;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: x-large;
+        text-decoration:solid;
+        border-radius: 5px;
+        font-weight: bold;
+        margin: 10%;
+        width: 80%;
+        height: 70%;
+        bottom: 10%;
+    }
+
+    #Boton button:hover {
+    background-color: #555;
+}
+
+
+</style>
+<div id="Contenedor">
+    <div id="PrimeraP">
+        <div id="imageContainer">
+        <img id="imagen"></div>
+    </div>
+    <div id="SegundaP">
+        <div id="Boton">
+            <button id="btnXML">Peticion XML</button>
+        </div>
+        <div id="Boton">
+            <button id="btnFetch">Peticion Fetch</button>
+        </div>
+        <div id="Boton">
+            <button id="btnAsync">Peticion Async</button>
+        </div>
+        <div id="Boton">
+            <button id="btnAxios">Peticion Axios</button>
+        </div>
+        <div id="Boton">
+            <button id="btnJquery">Peticion JQuery</button>
+        </div>
+    </div>
+    
+</div>
+    <script>
+        //Peticion XML
+        document.getElementById("btnXML").addEventListener("click",()=>{
+            const url = 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/EX1_100';
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.setRequestHeader("X-RapidAPI-Key", "689d587a8emshcbb3ae113a73327p13df3ajsn18eddb584d70");
+            xhr.setRequestHeader("X-RapidAPI-Host", "omgvamp-hearthstone-v1.p.rapidapi.com");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+                        if (data.length > 0) {
+                            const cardImage = document.getElementById('imagen');
+                            const imageUrl = data[0].img;
+                            cardImage.src = imageUrl;
+                        } else {
+                            console.error('No se encontraron datos para la carta.');
+                        }
+                    } else {
+                        console.error('Error en la solicitud. Código de estado: ' + xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+        })
+
+        //Peticion Fetch
+        document.getElementById("btnFetch").addEventListener('click',() => {
+            const url = 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/EX1_116';
+            const options = {
+                headers: {
+                    'X-RapidAPI-Key': '689d587a8emshcbb3ae113a73327p13df3ajsn18eddb584d70',
+                    'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+                }
+            };
+
+            fetch(url, options)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Request failed with status code: ' + response.status);
+                }
+            })
+            .then(data => {
+                if (data.length > 0) {
+                    const cardImage = document.getElementById('imagen');
+                    const imageUrl = data[0].img;
+                    cardImage.src = imageUrl;
+                } else {
+                    console.error('No se encontraron datos para la carta.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+
+        //Peticion Fetch Async
+        document.getElementById("btnAsync").addEventListener("click", async () => {
+            const url = 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/EX1_102';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '689d587a8emshcbb3ae113a73327p13df3ajsn18eddb584d70',
+                    'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+                }
+            };
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                const Carta = document.getElementById('imagen');
+
+                const imageUrl = result[0].img;
+                Carta.src = imageUrl;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        //Peticion Axios
+        document.getElementById("btnAxios").addEventListener("click", () => {
+            const url = 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/EX1_103';
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '689d587a8emshcbb3ae113a73327p13df3ajsn18eddb584d70',
+                    'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+                }
+            };
+
+            axios.get(url, options)
+            .then(response => {
+                const data = response.data;
+                if (data.length > 0) {
+                    const cardImage = document.getElementById('imagen');
+                    const imageUrl = data[0].img;
+                    cardImage.src = imageUrl;
+                } else {
+                    console.error('No se encontraron datos para la carta.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+
+
+        //Peticion JQuery
+        $(document).ready(function() {
+            $("#btnJquery").click(function() {
+                const url = 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/EX1_105';
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '689d587a8emshcbb3ae113a73327p13df3ajsn18eddb584d70',
+                        'X-RapidAPI-Host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+                    },
+                    success: function(data) {
+                        if (data.length > 0) {
+                            const cardImage = $("#imagen");
+                            const imageUrl = data[0].img;
+                            cardImage.attr("src", imageUrl);
+                        } else {
+                            console.error('No se encontraron datos para la carta.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud. Código de estado: ' + xhr.status);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>  

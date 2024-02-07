@@ -1,0 +1,16 @@
+{
+  "name": "areas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jaimre",
+  "license": "UNLICENSED",
+  "description": "Modulos de commonjs",
+  "repository": {
+    "type": "git",
+    "url": "C:\\Archivos\\Aplicaciones\\WAMPSERVER\\www\\PracticaGIt\\21100158-PWB\\Parcial2\\ModuloCommonjs"
+  }
+}
