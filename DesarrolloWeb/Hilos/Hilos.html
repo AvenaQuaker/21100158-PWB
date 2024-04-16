@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilos</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div id="Recarga"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+        const miElemento = document.querySelector('#Recarga');
+        let animacion1Terminada = false;
+        let animacion2Terminada = false;
+
+        // Escucha el evento 'animationend' para ambas animaciones
+        miElemento.addEventListener('animationend', (event) => {
+            if (event.animationName === 'Animacion1') {
+                animacion1Terminada = true;
+            } else if (event.animationName === 'Animacion2') {
+                animacion2Terminada = true;
+            }
+
+            // Si ambas animaciones han terminado, recarga la página
+            if (animacion1Terminada && animacion2Terminada) {
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

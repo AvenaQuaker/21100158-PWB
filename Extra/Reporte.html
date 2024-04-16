@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Contratacion</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log(localStorage.getItem('fecha'))
+
+            var fecha = localStorage.getItem('fecha');
+            var nombre = localStorage.getItem('nombre');
+            var telefono = localStorage.getItem('telefono');
+            var email = localStorage.getItem('email');
+            var pago = localStorage.getItem('pago');
+            var Monto = localStorage.getItem('Monto');
+            var Anticipo = localStorage.getItem('Anticipo');
+
+            document.getElementById('Nombre').textContent = nombre;
+            document.getElementById('Correo').textContent = email;
+            document.getElementById('Telefono').textContent = telefono;
+            document.getElementById('Metodo').textContent = pago;
+            document.getElementById('Fecha').textContent = fecha;
+            document.getElementById('Monto').textContent = Monto;
+            document.getElementById('Anticipo').textContent = Anticipo;
+
+        });
+    </script>
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: "Bahnschrift", "Roboto Condensed";
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group div {
+            background-color: aliceblue;
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        #Constancia {
+            margin-top: 7rem;
+            color: #949494;
+        }
+
+        #top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .Logo {
+            background: url('Logo.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <h1>Reporte de Contratacion</h1>
+        <div class="Logo"></div>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="Nombre del Contratista">Nombre del Contratista</label>
+            <div class="input" id="Nombre">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Correo Electronico">Correo Electronico</label>
+            <div class="input" id="Correo">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Telefono">Telefono</label>
+            <div class="input" id="Telefono">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Metodo de Pago">Metodo de Pago</label>
+            <div class="input" id="Metodo">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Fecha del Evento">Fecha del Evento</label>
+            <div class="input" id="Fecha">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Monto Final">Monto Final</label>
+            <div class="input" id="Monto">Cosas</div>
+        </div>
+        <div class="form-group">
+            <label for="Anticipo">Anticipo</label>
+            <div class="input" id="Anticipo">Cosas</div>
+        </div>
+        <div class="form-group" id="Constancia">
+            <labe for="Constancia">
+                Este documento, generado automáticamente, 
+                es un contrato de servicio que establece 
+                los términos y condiciones bajo los cuales 
+                se prestará el servicio especificado. Al 
+                aceptar este contrato, ambas partes acuerdan 
+                cumplir con sus respectivas obligaciones como 
+                se detalla en el documento.<br><br>
+            
+                Este contrato es legalmente vinculan
+                te y avala la contratación del servicio. Su 
+                propósito es proteger los derechos e intereses d
+                e ambas partes y garantizar que se cumplan las expecta
+                tivas del servicio.
+            
+        </div>
+    </form>
+</body>
+</html>
+

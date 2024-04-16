@@ -1,0 +1,397 @@
+body {
+    background: linear-gradient(90deg, #028DAC 0%, #0055A3 75.89%, #02315B 99.2%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5.1rem 7.4rem 5.8rem 7.4rem;
+    width: 86rem;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.login-layout {
+    border-radius: 2.8rem;
+    border: 0.2rem solid #D8D8D8;
+    background: #FFFFFF;
+    position: absolute;
+    width: 71.3rem;
+    height: 37.2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-layout::after {
+    filter: blur(10.3rem);
+}
+
+.welcome-back {
+    position: absolute;
+    left: 5.1rem;
+    top: 5.5rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #000000;
+}
+
+.log-in {
+    position: absolute;
+    left: 5rem;
+    top: 6.5rem;
+    overflow-wrap: break-word;
+    font-family: 'Verdana';
+    font-weight: Bold;
+    font-size: 4rem;
+    color: #000000;
+}
+.email {
+    position: absolute;
+    left: 5.1rem;
+    top: 15rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #000000;
+}
+.email-text-box {
+    border:none;
+    border-radius: 0.3rem;
+    background: #7CD0C1;
+    position: absolute;
+    left: 5.1rem;
+    top: 50%;
+    translate: 0 -50%;
+    width: 26.3rem;
+    height: 2.3rem;
+}
+.password {
+    position: absolute;
+    left: 5.1rem;
+    top: 21rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #000000;
+}
+.forgot-password {
+    position: absolute;
+    left: 21rem;
+    top: 21.5rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.password-text-box {
+    border:none;
+    border-radius: 0.3rem;
+    background: #7CD0C1;
+    position: absolute;
+    left: 5.1rem;
+    top: 23.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0.3rem 0.8rem;
+    width: 26.6rem;
+    height: 2.3rem;
+    box-sizing: border-box;
+}
+
+.invisible-1 {
+    border: none;
+    background: url('https://fn12.com/api/clusters/cluster-fn12-prod-us-west1/projects/5vZVautrwjzyn47Nm6UFi7/assets/images/8eedb8f3b02ba9bf59050112f5616f4dfd1380d7?Expires=1711308075&KeyName=fn12-cdn&Signature=xEIC5oj7yyQSrR4ULLdLOV77Sow=') 30% / cover no-repeat;
+    position: absolute;
+    left: 29rem;
+    top: 23.8rem;
+    opacity: 0.5;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.problems {
+    position: absolute;
+    left: 11rem;
+    bottom: 2rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+.request-help {
+    position: absolute;
+    left: 17.5rem;
+    bottom: 2rem;
+    overflow-wrap: break-word;
+    font-family: 'Bahnschrift', 'Roboto Condensed';
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #6EB8AB;
+}
+.login-right-frame {
+    filter: blur(0.1rem);
+    border-radius: 2.8rem;
+    background: #6EB8AB;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    width: 25.3rem;
+    height: 37.8rem;
+}
+.image-1 {
+    background: url('https://fn12.com/api/clusters/cluster-fn12-prod-us-west1/projects/5vZVautrwjzyn47Nm6UFi7/assets/images/a9b298bc8c597984ab66721df3f0c96d09358674?Expires=1711308075&KeyName=fn12-cdn&Signature=n2UW-SAdgTxc5KGiNUoVtg3EWLA=') 100% / contain no-repeat;
+    position: absolute;
+    transform: scaleX(-1);
+    z-index: 1;
+    right: 3.3rem;
+    width: 32.4rem;
+    height: 41.7rem;
+}
+
+.box div{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border:6px #000000 solid;
+    z-index: -1;
+}
+
+.box div:nth-child(1){
+    top:8%;
+    left:40%;
+    animation: animate 10s linear infinite;
+}
+
+.box div:nth-child(2){
+    top:85%;
+    left:70%;
+    animation: animate 7s linear infinite;
+}
+
+.box div:nth-child(3){
+    top:17%;
+    left:6%;
+    animation: animate 9s linear infinite;
+}
+
+.box div:nth-child(4){
+    top:10%;
+    left:95%;
+    animation: animate 10s linear infinite;
+}
+
+.box div:nth-child(5){
+    top:10%;
+    left:95%;
+    animation: animate 10s linear infinite;
+    display: none;
+}
+
+.box div:nth-child(6){
+    top:85%;
+    left:70;
+    animation: animate 12s linear infinite;
+}
+
+.box div:nth-child(7){
+    top:80%;
+    left:95%;
+    animation: animate 15s linear infinite;
+}
+
+.box div:nth-child(8){
+    height: 60px;
+    width: 10px;
+    background-color: #ffea00;
+    top:47%;
+    left:50%;
+    animation: Proceso 3s linear;
+    animation-delay: 12s;
+    animation-fill-mode: forwards;
+}
+
+.box div:nth-child(9){
+    top:80%;
+    left:15%;
+    animation: animate 9s linear infinite;
+}
+
+.box div:nth-child(10){
+    top:5%;
+    left:70%;
+    animation: animate 10s linear infinite;
+}
+
+.box div:nth-child(11){
+    background-color: darkgreen;
+    top:22%;
+    left:85%;
+    animation-name: Animacion1,Animacion2;
+    animation-duration: 15s,15s;
+    animation-delay: 0s,15s;
+    animation-fill-mode: forwards;
+}
+
+.box div:nth-child(12){
+    top:47%;
+    left:85%;
+    animation: animar 5s linear infinite;
+    display: none;
+}
+
+.box div:nth-child(18){
+    background-color: darkgreen;
+    top:72%;
+    left:85%;
+    animation-name: Animacion3;
+    animation-duration: 25s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+.box div:nth-child(13){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:25%;
+    left:90%;
+}
+
+.box div:nth-child(14){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:50%;
+    left:90%;
+}
+
+.box div:nth-child(15){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:25%;
+    left:10%;
+}
+
+.box div:nth-child(16){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:50%;
+    left:10%;
+}
+
+.box div:nth-child(17){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:75%;
+    left:10%;
+}
+
+.box div:nth-child(19){
+    height: 30px;
+    width: 30px;
+    background-color: #000000;
+    border-radius: 50%;
+    top:75%;
+    left:90%;
+}
+
+.box div:nth-child(20){
+    height: 60px;
+    width: 10px;
+    background-color: #ffea00;
+    top:22%;
+    left:50%;
+    animation: Proceso 3s linear;
+    animation-delay: 12s;
+    animation-fill-mode: forwards;
+}
+
+
+.email-text-box:hover,
+.password-text-box:hover {
+    transition: all 0.3s ease-in-out;
+    background: #60a094;
+}
+
+.invisible-1:hover {
+    cursor:pointer;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.request-help:hover,
+.forgot-password:hover {
+    cursor:pointer;
+    transition: all 0.3s ease-in-out;
+    color: #60a094;
+}
+
+@keyframes animate{
+    0%{
+        transform: scale(0) translateY(0) rotate(0);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1.3) translate(-90px) rotate(360deg);
+        
+        opacity: 0;
+    }
+}
+
+@keyframes Animacion1{
+    0%{
+        transform: translateY(0) rotate(0);
+    }
+    100%{
+        transform: translate(-38rem) rotate(1540deg);
+        
+    }
+}
+
+@keyframes Animacion2{
+    0%{
+        left: 55%;
+        transform: translateY(0) rotate(0);
+    }
+    100%{
+        transform: translate(-85rem) rotate(1540deg);
+        
+    }
+}
+
+@keyframes Animacion3{
+    0%{
+        transform: translateY(0) rotate(0);
+    }
+    100%{
+        transform: translate(-85rem) rotate(1080deg);
+    }
+}
+
+@keyframes Proceso {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
