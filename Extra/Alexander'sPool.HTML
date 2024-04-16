@@ -87,19 +87,20 @@
             <div id="VentanaModal">
             <form id="reserva-form">
                 <label for="Fecha">Fecha:</label> 
-                <input type="text" id="timedatePicker" autocomplete="off" required>
+                <input type="text" id="timedatePicker" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" autocomplete="off" required>
+                <input type="text" id="nombre" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
     
                 <label for="telefono">Teléfono:</label>
-                <input type="number" id="telefono" autocomplete="off" required>
+                <input type="number" id="telefono" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
 
                 <label for="email">Correo Electronico:</label>
-                <input type="email" id="email" autocomplete="off" required>
+                <input type="email" id="email" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
     
                 <label for="Pago"> Metodo de Pago</label>
-                <select> 
+                <select id="metodoPago" onchange="guardarDatosEnLocalStorage()" required> 
+                    <option value=""></option>
                     <option value="Paypal">Paypal</option>
                     <option value="Mastercard">Mastercard</option>
                     <option value="VISA">Visa</option>
@@ -115,11 +116,7 @@
                 </div>
                 <div>
                     <button type="button" class="btnModal" id="btn-print" class="btn btn-success btn-lg">Reserva Ahora</button>
-                    <iframe
-					id="frame"
-					style="width: 100%; border: 0; height: 0"
-					src="Reporte.html"
-				    ></iframe>
+                    <iframe id="frame" style="width: 100%; border: 0; height: 0" src="Reporte.html"></iframe>
                 </div>
             </form>
             <div id="ImagenModal"></div>

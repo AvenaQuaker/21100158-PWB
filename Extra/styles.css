@@ -220,7 +220,7 @@ h1, h2 {
 
 .btnModal {
   display: inline-block;
-  background-color: #333;
+  background-color: #ffffff;
   color: #fff;
   padding: 15px 30px;
   text-decoration: none;
@@ -228,6 +228,7 @@ h1, h2 {
   font-weight: bold;
   font-size: medium;
   transition: background-color 0.3s, color 0.3s;
+  pointer-events: none;
 }
 
 .btn:hover {

@@ -108,17 +108,34 @@ $(document).ready(function () {
     
 });
 
-$('#btn-print').on('click', ()=> {
-    localStorage.clear();
+let Formulario = document.getElementById('reserva-form')
+let Boton = document.getElementById('btn-print')
 
+Formulario.addEventListener('input', ()=>{
+    if(Formulario.checkValidity())
+    {
+        Boton.style.backgroundColor = '#333'
+        Boton.style.pointerEvents = 'auto'
+    }
+    else
+    {
+        Boton.style.backgroundColor = '#ffffff'
+        Boton.style.pointerEvents = 'none'
+    }
+})
+
+
+function guardarDatosEnLocalStorage() {
     var fecha = document.getElementById('timedatePicker').value;
     var nombre = document.getElementById('nombre').value;
     var telefono = document.getElementById('telefono').value;
     var email = document.getElementById('email').value;
-    var pago = document.querySelector('select').value;
-    var Monto = MI
-    var Anticipo = Ant
+    var pago = document.querySelector('select').value
+    var Monto = MI;
+    var Anticipo = Ant;
+    var imprimirContrato = document.getElementById('Fact').checked;
 
+    // Guardar datos en el localStorage
     localStorage.setItem('fecha', fecha);
     localStorage.setItem('nombre', nombre);
     localStorage.setItem('telefono', telefono);
@@ -126,12 +143,5 @@ $('#btn-print').on('click', ()=> {
     localStorage.setItem('pago', pago);
     localStorage.setItem('Monto', Monto);
     localStorage.setItem('Anticipo', Anticipo);
-
-    console.log(localStorage.getItem('fecha'))
-    console.log(localStorage.getItem('nombre'))
-    console.log(localStorage.getItem('telefono'))
-    console.log(localStorage.getItem('email'))
-    console.log(localStorage.getItem('pago'))
-    console.log(localStorage.getItem('Monto'))
-    console.log(localStorage.getItem('Anticipo'))
-})
+    localStorage.setItem('imprimirContrato', imprimirContrato);
+}

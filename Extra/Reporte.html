@@ -2,28 +2,6 @@
 <html>
 <head>
     <title>Reporte de Contratacion</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log(localStorage.getItem('fecha'))
-
-            var fecha = localStorage.getItem('fecha');
-            var nombre = localStorage.getItem('nombre');
-            var telefono = localStorage.getItem('telefono');
-            var email = localStorage.getItem('email');
-            var pago = localStorage.getItem('pago');
-            var Monto = localStorage.getItem('Monto');
-            var Anticipo = localStorage.getItem('Anticipo');
-
-            document.getElementById('Nombre').textContent = nombre;
-            document.getElementById('Correo').textContent = email;
-            document.getElementById('Telefono').textContent = telefono;
-            document.getElementById('Metodo').textContent = pago;
-            document.getElementById('Fecha').textContent = fecha;
-            document.getElementById('Monto').textContent = Monto;
-            document.getElementById('Anticipo').textContent = Anticipo;
-
-        });
-    </script>
     <style>
         body {
             background-color: #e0e0e0;
@@ -138,6 +116,28 @@
             
         </div>
     </form>
+    <script>
+        setInterval(cargarDatosLocalStorage, 100);
+
+        function cargarDatosLocalStorage() {
+            var fecha = localStorage.getItem('fecha');
+            var nombre = localStorage.getItem('nombre');
+            var telefono = localStorage.getItem('telefono');
+            var email = localStorage.getItem('email');
+            var pago = localStorage.getItem('pago');
+            var Monto = localStorage.getItem('Monto');
+            var Anticipo = localStorage.getItem('Anticipo');
+            var imprimirContrato = localStorage.getItem('imprimirContrato');
+
+            document.getElementById('Nombre').textContent = nombre;
+            document.getElementById('Correo').textContent = email;
+            document.getElementById('Telefono').textContent = telefono;
+            document.getElementById('Metodo').textContent = pago;
+            document.getElementById('Fecha').textContent = fecha;
+            document.getElementById('Monto').textContent = Monto;
+            document.getElementById('Anticipo').textContent = Anticipo;
+        }
+    </script>
 </body>
 </html>
 
