@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexander's Pool</title>
-    <script src="jquery.js"></script>
-    <script src="jquery.datetimepicker.full.min.js"></script>
-    <link rel="stylesheet" href="jquery.datetimepicker.min.css">
-    <link rel="stylesheet" href="styles.css">
-</header>
+    <script src="Dependencias/jquery.js"></script>
+    <script src="Dependencias/jquery.datetimepicker.full.min.js"></script>
+    <link rel="stylesheet" href="Dependencias/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="PaginaPrincipal.css">
 <body>
     <header>
         <div id="navbar-left">
@@ -28,8 +26,6 @@
     <nav id="sidebar">
         <ul>
             <li><button id="Boton-Final">&#9776; Menu</button></a></li>
-            <li></li>
-            <li></li>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#agenda">Agenda</a></li>
             <li><a href="#contacto">Contacto</a></li>
@@ -61,7 +57,7 @@
                     <li>Microondas</li>
                     <li>Refrigerador</li>
                 </div>
-                <img src="FotoInicial.jpg">
+                <img src="Recursos/FotoInicial.jpg">
             </div>
         </div>
     </section>
@@ -72,8 +68,8 @@
             <p>Reserva tu día y hora para disfrutar de nuestra piscina.</p>
             <button class="btn" id="abrir-modal">Reservar</button>
             <div class="Imagenes">
-                <img src="Foto1.jpg">
-                <img src="Foto2.jpg">
+                <img src="Recursos/Foto1.jpg">
+                <img src="Recursos/Foto2.jpg">
             </div>
         </div>
     </section>
@@ -87,16 +83,16 @@
             <div id="VentanaModal">
             <form id="reserva-form">
                 <label for="Fecha">Fecha:</label> 
-                <input type="text" id="timedatePicker" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
+                <input type="text" id="timedatePicker" onkeyup="guardarDatosEnLocalStorage()" required>
 
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
+                <input type="text" id="nombre"  onkeyup="guardarDatosEnLocalStorage()" required>
     
                 <label for="telefono">Teléfono:</label>
-                <input type="number" id="telefono" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
+                <input type="tel" id="telefono"  onkeyup="guardarDatosEnLocalStorage()" required>
 
                 <label for="email">Correo Electronico:</label>
-                <input type="email" id="email" autocomplete="off" onkeyup="guardarDatosEnLocalStorage()" required>
+                <input type="email" id="email"  onkeyup="guardarDatosEnLocalStorage()" required>
     
                 <label for="Pago"> Metodo de Pago</label>
                 <select id="metodoPago" onchange="guardarDatosEnLocalStorage()" required> 
@@ -116,7 +112,7 @@
                 </div>
                 <div>
                     <button type="button" class="btnModal" id="btn-print" class="btn btn-success btn-lg">Reserva Ahora</button>
-                    <iframe id="frame" style="width: 100%; border: 0; height: 0" src="Reporte.html"></iframe>
+                    <iframe id="frame" style="width: 100%; border: 0; height: 0" src="RE.html"></iframe>
                 </div>
             </form>
             <div id="ImagenModal"></div>
@@ -168,7 +164,7 @@
 
     <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
-	<script src="custom.js"></script>
-    <script src="Javascript.js"></script>
+	<script src="Dependencias/custom.js"></script>
+    <script src="PaginaPrincipal.js"></script>
 </body>
 </html>

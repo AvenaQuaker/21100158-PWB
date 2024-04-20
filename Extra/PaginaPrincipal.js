@@ -144,4 +144,16 @@ function guardarDatosEnLocalStorage() {
     localStorage.setItem('Monto', Monto);
     localStorage.setItem('Anticipo', Anticipo);
     localStorage.setItem('imprimirContrato', imprimirContrato);
+
+    console.clear()
+
+    //Obtener datos en el Local Storgae
+    console.log(localStorage.getItem('fecha'));
+    console.log(localStorage.getItem('nombre'));
+    console.log(localStorage.getItem('telefono'));
+    console.log(localStorage.getItem('email'));
+    console.log(localStorage.getItem('pago'));
+    console.log(localStorage.getItem('Monto'));
+    console.log(localStorage.getItem('Anticipo'));
+    console.log(localStorage.getItem('imprimirContrato'));
 }

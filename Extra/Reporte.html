@@ -12,21 +12,23 @@
             margin-bottom: 1rem;
         }
         .form-group label {
+            Color: #005b94;
             font-weight: bold;
         }
         .form-group div {
+            color: #000000;
             background-color: aliceblue;
             width: 70%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 1rem;
             margin-top: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
         .form-group textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #c7c7c7;
             border-radius: 1rem;
             margin-top: 1rem;
             margin-bottom: 1rem;
@@ -46,7 +48,7 @@
         #Constancia {
             font-size: 1rem;
             margin-top: 7.5rem;
-            color: #949494;
+            color: white;
         }
 
         .Left{
@@ -55,19 +57,18 @@
         }
 
         .Right {
-            background: linear-gradient(rgb(99, 180, 255), rgb(1, 31, 97));
+            border: #005b94;
             color: #2b2a2a;
             align-items: center;
             display: flex;
             flex-direction: column;
             width: 40%;
-            height: 96.8vh;
+            height: 90vh;
             padding: 1rem;
         }
 
         .Logo {
-            filter: drop-shadow(1px 1px 3px #000);
-            background: url('Logo.png');
+            background: url('Recursos/Logo.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
             width: 250px;
@@ -81,22 +82,22 @@
         }
 
         h1{
+            text-shadow:3px 4px 8px #6e6e6e;
             margin-bottom: 2rem;
             margin-top: 0.5rem;
         }
 
         h2 {
             text-align: end;
-            color: #ddd;
-            text-shadow:3px 4px 8px #000;
+            color: #000000;
             font-size: 1.7rem;
             width: 90%;
         }
 
         #clausula {
             text-align: end;
-            color: white;
-            font-size: 1.1rem;
+            color: #bebebe;
+            font-size: 1rem;
             margin-top: 1rem;
             margin-bottom: 1rem;
             width: 90%;
@@ -106,7 +107,7 @@
 <body>
     <div id="aside">
         <div class="Left">
-            <h1>Reporte de Contratacion</h1>
+            <h1>Recibo de Compra</h1>
             <form>
                 <div class="form-group">
                     <label for="Nombre del Contratista">Nombre del Contratista</label>
@@ -149,8 +150,8 @@
             </form> 
         </div>
         <div class="Right">
-            <div class="Logo"></div>
-            <h2>Clausulas</h2>
+            <img src="Logo.png" class="Logo" ></img>
+            <h2>Reglas</h2>
             <label id="clausula">- El arrendatario recibe el inmueble con todo el servicio sanitario en perfecto estado el cual se compromete del la misma manera.</label>
             <label id="clausula">- Queda expresamente prohibido sub arrendar o traspasar toda parte del inmueble arrendador.</label>
             <label id="clausula">- En caso de un daño al mobiliario tendra que hacerse responsable el arrendatario,</label>
@@ -179,8 +180,10 @@
             document.getElementById('Telefono').textContent = telefono;
             document.getElementById('Metodo').textContent = pago;
             document.getElementById('Fecha').textContent = fecha;
-            document.getElementById('Monto').textContent = Monto;
-            document.getElementById('Anticipo').textContent = Anticipo;
+            document.getElementById('Monto').textContent = '$ ' + Monto + '.00';
+            document.getElementById('Anticipo').textContent = '$ ' + Anticipo + '.00';
+
+            // CTRL K + CTRL C
         }
     </script>
 </body>

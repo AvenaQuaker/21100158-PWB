@@ -1,0 +1,60 @@
+$body-background-color: rgb(252, 252, 252);
+$font-family: "Bahnschrift", "Roboto Condensed";
+$primary-color: #005b94;
+$secondary-color: #000000;
+$button-color: #4CAF50;
+$button-hover-color: #45a049;
+$text-shadow-color: #6e6e6e;
+$text-color: #2b2a2a;
+$aside-border-color: #005b94;
+$clause-color: #bebebe;
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: $body-background-color;
+    font-family: $font-family;
+    margin: 0px;
+    padding: 2rem;
+}
+
+img {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 200px;
+    height: 90px;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    text-shadow: 3px 4px 8px $text-shadow-color;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+}
+
+h2 {
+    color: $secondary-color;
+    font-size: 1.7rem;
+}
+
+#Mid{
+    text-align: center;
+}
+
+#Top {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#area-chart,
+#line-chart,
+#bar-chart,
+#stacked,
+#pie-chart{
+    max-height: 250px;
+}
+
+#Chart {
+    align-items: start;
+}

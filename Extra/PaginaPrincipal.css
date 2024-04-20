@@ -2,15 +2,16 @@ body {
   font-family: "Bahnschrift", "Roboto Condensed";
   margin: 0;
   padding: 0;
-  background-image: url("Fondo.png");
+  background-image: url("Recursos/Fondo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
+  border-radius: 1rem;
 }
 
 header {
-  background-color: #103780;
+  background: radial-gradient(#0073bf, #001d9c);
   color: #fff;
   padding: 10px 0;
   display: flex;
@@ -21,7 +22,7 @@ header {
 .Titulo {
   width: 400px;
   height: 50px;
-  background: url("Titulo.png");
+  background: url("Recursos/Titulo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -31,7 +32,7 @@ header {
 .Logo {
   width: 160px;
   height: 50px;
-  background: url("Logo.png");
+  background: url("Recursos/Logo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -45,7 +46,7 @@ header {
 }
 
 .FotoInicial {
-  background: url("FotoInicial.jpg");
+  background: url("Recursos/FotoInicial.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -60,10 +61,11 @@ header {
   left: -150px;
   width: 150px;
   height: 100%;
-  background-color: #0a2455;
+  background: linear-gradient(#015e9c, #01187e);
   transition: left 0.3s;
   z-index: 1;
   overflow-y: auto;
+  border-radius: 0.5rem;
 }
 
 #sidebar ul {
@@ -84,7 +86,7 @@ header {
 }
 
 #sidebar a:hover {
-  background-color: #103881;
+  background-color: #0059ff;
 }
 
 .show-sidebar {
@@ -92,7 +94,7 @@ header {
 }
 
 #Boton-Inicio {
-  background-color: #103780;
+  background: transparent;
   color: #fff;
   border: none;
   padding: 10px;
@@ -102,7 +104,7 @@ header {
 }
 
 #Boton-Final {
-  background-color: #0a2455;
+  background-color: transparent;
   color: #fff;
   border: none;
   padding: 10px;
@@ -112,11 +114,11 @@ header {
 }
 
 #Boton-Inicio:hover {
-  background-color: #1949a3;
+  background-color: #0059ff;
 }
 
 #Boton-Final:hover {
-  background-color: #0e3170;
+  background-color: #0059ff;
 }
 
 section {
@@ -125,7 +127,7 @@ section {
   padding: 20px;
   border-radius: 1rem;
   box-shadow: 0rem 0.3rem 0.3rem 0rem rgba(0, 0, 0, 0.25);
-  height: 60vh;
+  max-height: 70vh;
   max-width: 60%;
   display: flex;
   flex-direction: column;
@@ -170,20 +172,23 @@ section#contacto {
 }
 
 .container {
+  height: 100%;
   max-width: 90%;
   margin: 0 auto;
 }
 
 .Imagenes {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: row;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 1rem;
+  max-width: 100%;
+  max-height: 70%;
 }
 
 .Imagenes img {
-  width: 100%;
-  height: 60vh;
+  max-width: 50%;
+  max-height: 50%;
 }
 
 nav ul {
@@ -416,7 +421,7 @@ form label, form p {
 }
 
 .modal div #ImagenModal {
-  background: url("Foto5.jpg");
+  background: url("Recursos/Foto5.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -588,7 +593,7 @@ footer p {
 }
 @media screen and (max-width: 800px) {
   .FotoInicial {
-    background: url("FotoInicial.jpg");
+    background: url("Recursos/FotoInicial.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -598,7 +603,7 @@ footer p {
   }
   .Imagenes img {
     width: 100%;
-    height: 30vh;
+    max-height: 30vh;
   }
   #InicioDividido img {
     width: 100%;
@@ -610,7 +615,7 @@ footer p {
   .Titulo {
     width: 300px;
     height: 40px;
-    background: url("Titulo.png");
+    background: url("Recursos/Titulo.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -619,7 +624,7 @@ footer p {
   .Logo {
     width: 140px;
     height: 60px;
-    background: url("Logo.png");
+    background: url("Recursos/Logo.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -653,7 +658,7 @@ footer p {
     margin-top: -15px;
   }
   section#contacto {
-    height: 15vh;
+    max-height: 25vh;
     justify-content: center;
   }
 }
@@ -667,7 +672,7 @@ footer p {
   .Titulo {
     width: 300px;
     height: 40px;
-    background: url("Titulo.png");
+    background: url("Recursos/Titulo.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -676,7 +681,7 @@ footer p {
   .Logo {
     width: 100px;
     height: 30px;
-    background: url("Logo.png");
+    background: url("Recursos/Logo.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -691,4 +696,4 @@ footer p {
 }
 #anticipo-text {
   margin-bottom: 1rem;
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=PaginaPrincipal.css.map */
